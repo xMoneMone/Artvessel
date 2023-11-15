@@ -1,7 +1,13 @@
+import ProfileCards from "./ProfileCards";
 import Navbar from "./Navbar";
 
 function App() {
-  return <><Navbar/></>
+  return (
+  <>
+    <Navbar/>
+    <ProfileCards/>
+  </>
+  )
 }
 
 export default App
