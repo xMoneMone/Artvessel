@@ -12,9 +12,24 @@
     --items-margin: 0.8em;
     --accent-color: white;
     --accent-hover-color: rgba(255, 255, 255, 0.69);
+
+    /* PROFILE CARDS */
+    --h1-color: var(--navbar-color);
+    --card-color: white;
+    --profile-card-pfp-size: 10vh;
+    --profile-card-post-size: 12vh;
+    --profile-card-text-color: var(--navbar-color)
   }
+
+html {
+  overflow-x: hidden;
+}
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
     background-color: var(--body-color);
+}
+
+body * {
+  text-decoration: none;
 }
