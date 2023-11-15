@@ -1,4 +1,7 @@
 :root {
+    /* BODY */
+    --body-color: rgb(231, 231, 231);
+
     /* NAVBAR */
     --navbar-color: rgb(87, 87, 87);
     --logo-height: 9vh;
@@ -8,3 +11,8 @@
     --accent-color: white;
     --accent-hover-color: rgba(255, 255, 255, 0.69);
   }
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--body-color);
+}

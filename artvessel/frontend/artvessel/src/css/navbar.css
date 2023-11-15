@@ -55,7 +55,6 @@
 
 .guest > *{
     text-decoration: none;
-    font-family: 'Roboto Condensed', sans-serif;
     color: var(--navbar-color);
     margin-left: var(--items-margin);
     background-color: var(--accent-color);
