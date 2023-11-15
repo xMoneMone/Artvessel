@@ -1,0 +1,74 @@
+@import "general.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+.navbar {
+    background-color: var(--navbar-color);
+    position: sticky; top: 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.314);
+    align-items: center;
+    padding: 1vh 2vw;
+}
+
+.logo > a{
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: var(--logo-height);
+    margin-right: var(--items-margin);
+}
+
+.logo-text {
+    height: var(--logo-text-height);
+}
+
+.pfp {
+    height: var(--pfp-height);
+    width: var(--pfp-height);
+    overflow: hidden;
+    border-radius: 100%;
+    margin-left: var(--items-margin);
+}
+
+.pfp > img {
+    width: 100%;
+}
+
+.saved {
+    margin-left: var(--items-margin);
+    height: 3vh;
+    fill: var(--accent-color);
+    transition: all ease-in-out 200ms;
+}
+
+.saved:hover {
+    fill: var(--accent-hover-color)
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.guest > *{
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: black;
+    margin-left: var(--items-margin);
+    background-color: var(--accent-color);
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    transition: all ease-in-out 200ms;
+}
+
+.guest > *:hover{
+    background-color: var(--accent-hover-color);
+}
+
+.logged-in {
+    display: flex;
+    align-items: center;
+}

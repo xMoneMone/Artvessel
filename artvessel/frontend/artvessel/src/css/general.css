@@ -1,0 +1,10 @@
+:root {
+    /* NAVBAR */
+    --navbar-color: rgb(87, 87, 87);
+    --logo-height: 8vh;
+    --logo-text-height: 4vh;
+    --pfp-height: 6vh;
+    --items-margin: 1em;
+    --accent-color: white;
+    --accent-hover-color: rgba(255, 255, 255, 0.69);
+  }
