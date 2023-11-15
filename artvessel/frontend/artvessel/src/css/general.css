@@ -1,8 +1,8 @@
 :root {
     /* NAVBAR */
     --navbar-color: rgb(87, 87, 87);
-    --logo-height: 10vh;
-    --logo-text-height: 4vh;
+    --logo-height: 9vh;
+    --logo-text-height: 3vh;
     --pfp-height: 6vh;
     --items-margin: 0.8em;
     --accent-color: white;
