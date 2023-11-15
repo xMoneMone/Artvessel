@@ -1,5 +1,4 @@
 @import "general.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 .navbar {
     background-color: var(--navbar-color);
