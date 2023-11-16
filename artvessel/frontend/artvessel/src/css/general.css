@@ -16,9 +16,11 @@
     /* PROFILE CARDS */
     --h1-color: var(--navbar-color);
     --card-color: white;
-    --profile-card-pfp-size: 10vh;
-    --profile-card-post-size: 12vh;
-    --profile-card-text-color: var(--navbar-color)
+    --card-width: 30rem;
+    --profile-card-pfp-size: 6rem;
+    --profile-card-post-size: 8rem;
+    --profile-card-text-color: var(--navbar-color);
+    --cover-height: 6rem;
   }
 
 html {
