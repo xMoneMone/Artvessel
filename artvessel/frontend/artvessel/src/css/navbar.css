@@ -25,15 +25,15 @@
     height: var(--logo-text-height);
 }
 
-.pfp {
-    height: var(--pfp-height);
-    width: var(--pfp-height);
+.navbar-pfp {
+    height: var(--navbar-pfp-height);
+    width: var(--navbar-pfp-height);
     overflow: hidden;
     border-radius: 100%;
     margin-left: var(--items-margin);
 }
 
-.pfp > img {
+.navbar-pfp > img {
     width: 100%;
 }
 
