@@ -23,4 +23,4 @@ class UserProfile(models.Model):
 
 class UserSave(models.Model):
     user = models.ManyToManyField(User)
-    to_post = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    to_user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

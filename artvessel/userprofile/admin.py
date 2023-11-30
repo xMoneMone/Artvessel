@@ -1,5 +1,5 @@
 from django.contrib import admin
-from userprofile.models import UserProfile
+from userprofile.models import UserProfile, UserSave
 
 
 def shorten(string, val: int):
@@ -24,3 +24,12 @@ class USerProfileAdmin(admin.ModelAdmin):
 
     def bio_pv(self, obj):
         return shorten(obj.bio, 20)
+
+
+@admin.register(UserSave)
+class PostSaveAdmin(admin.ModelAdmin):
+    list_display = ("id", "post")
+
+    def post(self, obj):
+        user = obj.to_user
+        return f"{shorten(user, 10)}"
