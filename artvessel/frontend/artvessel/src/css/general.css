@@ -33,7 +33,7 @@
   /* FOOTER */
   --footer-height: 10vh;
   --footer-color: var(--navbar-color);
-  --footer-text-color: var(--accent-color);
+  --footer-text-color: rgb(155, 155, 155);
 }
 
 html {
