@@ -1,0 +1,19 @@
+@import "general.css";
+
+.dark-button {
+  font-size: inherit;
+  border: none;
+  transition: none;
+  text-decoration: none;
+  color: var(--dark-button-text-color);
+  margin-left: var(--items-margin);
+  background-color: var(--dark-button-color);
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  transition: all ease-in-out 200ms;
+  cursor: pointer;
+}
+
+.dark-button:hover {
+  background-color: var(--dark-button-hover-color);
+}
