@@ -33,7 +33,7 @@
 
 .profile-card-cover {
   background-color: rgb(162, 162, 162);
-  height: var(--cover-height);
+  height: var(--profile-card-cover-height);
   width: 100%;
 }
 

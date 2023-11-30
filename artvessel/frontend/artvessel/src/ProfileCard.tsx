@@ -1,10 +1,11 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 
 function ProfileCard () {
     return (
     <>
-        <a href="#">
+        <Link to="/profile">
             <div className="profile-card">
                 <div className="profile-card-cover">
                     <img src="" alt=""></img>
@@ -21,7 +22,7 @@ function ProfileCard () {
                     <div className="profile-card-post"><img src="" alt=""></img></div>
                 </div>
             </div>
-        </a>
+        </Link>
     </>
     )
 }
