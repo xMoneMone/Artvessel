@@ -2,6 +2,7 @@
 
 .button {
   font-size: inherit;
+  font-family: var(--font);
   border: none;
   transition: none;
   text-decoration: none;

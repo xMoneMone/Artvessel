@@ -3,6 +3,7 @@
 :root {
   /* BODY */
   --body-color: rgb(231, 231, 231);
+  --font: "Roboto Condensed", sans-serif;
 
   /* NAVBAR */
   --navbar-color: rgb(87, 87, 87);
@@ -40,7 +41,7 @@ html {
 }
 
 body {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: var(--font);
   background-color: var(--body-color);
 }
 
