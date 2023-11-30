@@ -1,0 +1,14 @@
+@import "general.css";
+
+.footer {
+  width: 100%;
+  height: var(--footer-height);
+  background-color: var(--footer-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer * {
+  color: var(--footer-text-color);
+}

@@ -28,6 +28,11 @@
   --dark-button-color: var(--navbar-color);
   --dark-button-text-color: var(--accent-color);
   --dark-button-hover-color: rgba(49, 49, 49, 0.69);
+
+  /* FOOTER */
+  --footer-height: 10vh;
+  --footer-color: var(--navbar-color);
+  --footer-text-color: var(--accent-color);
 }
 
 html {
