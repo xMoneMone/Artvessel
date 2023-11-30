@@ -7,7 +7,6 @@
   transition: none;
   text-decoration: none;
   color: var(--dark-button-text-color);
-  margin-left: var(--items-margin);
   background-color: var(--dark-button-color);
   border-radius: 1em;
   padding: 0.5em 1em;
