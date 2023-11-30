@@ -12,6 +12,7 @@
   --navbar-pfp-height: 7vh;
   --items-margin: 0.8em;
   --accent-color: white;
+  --accent-hover-color: rgb(194, 194, 194);
 
   /* PROFILE CARDS */
   --h1-color: var(--navbar-color);
