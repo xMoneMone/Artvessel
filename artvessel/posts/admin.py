@@ -1,5 +1,5 @@
 from django.contrib import admin
-from posts.models import GalleryPost, PostSave
+from posts.models import GalleryPost, PostSave, ShopPost
 
 
 def shorten(string, val: int):
@@ -13,6 +13,17 @@ def shorten(string, val: int):
 
 @admin.register(GalleryPost)
 class GalleryPostAdmin(admin.ModelAdmin):
+    list_display = ("id", "artist", "description_pv")
+
+    def artist(self, obj):
+        return shorten(str(obj.user), 10)
+
+    def description_pv(self, obj):
+        return shorten(obj.description, 20)
+
+
+@admin.register(ShopPost)
+class ShopPostAdmin(admin.ModelAdmin):
     list_display = ("id", "artist", "description_pv")
 
     def artist(self, obj):
