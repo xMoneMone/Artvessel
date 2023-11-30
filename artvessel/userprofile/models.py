@@ -20,3 +20,7 @@ class UserProfile(models.Model):
     link5 = models.URLField(blank=True, null=True)
     shop_info = models.TextField(max_length=2000, blank=True, null=True)
 
+
+class UserSave(models.Model):
+    user = models.ManyToManyField(User)
+    to_post = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
