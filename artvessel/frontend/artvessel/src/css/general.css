@@ -1,35 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 
 :root {
-    /* BODY */
-    --body-color: rgb(231, 231, 231);
+  /* BODY */
+  --body-color: rgb(231, 231, 231);
 
-    /* NAVBAR */
-    --navbar-color: rgb(87, 87, 87);
-    --logo-height: 9vh;
-    --logo-text-height: 3vh;
-    --navbar-pfp-height: 7vh;
-    --items-margin: 0.8em;
-    --accent-color: white;
-    --accent-hover-color: rgba(255, 255, 255, 0.69);
+  /* NAVBAR */
+  --navbar-color: rgb(87, 87, 87);
+  --logo-height: 9vh;
+  --logo-text-height: 3vh;
+  --navbar-pfp-height: 7vh;
+  --items-margin: 0.8em;
+  --accent-color: white;
 
-    /* PROFILE CARDS */
-    --h1-color: var(--navbar-color);
-    --card-color: white;
-    --card-width: 40rem;
-    --profile-card-pfp-size: 8rem;
-    --profile-card-post-size: 12rem;
-    --profile-card-text-color: var(--navbar-color);
-    --cover-height: 6rem;
-  }
+  /* PROFILE CARDS */
+  --h1-color: var(--navbar-color);
+  --card-color: white;
+  --card-width: 40rem;
+  --profile-card-pfp-size: 8rem;
+  --profile-card-post-size: 11rem;
+  --profile-card-text-color: var(--navbar-color);
+  --cover-height: 6rem;
+
+  /* BUTTONS */
+  --button-color: var(--accent-color);
+  --button-text-color: var(--navbar-color);
+  --button-hover-color: rgba(255, 255, 255, 0.69);
+  --dark-button-color: var(--navbar-color);
+  --dark-button-text-color: var(--accent-color);
+  --dark-button-hover-color: rgba(49, 49, 49, 0.69);
+}
 
 html {
   overflow-x: hidden;
 }
 
 body {
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: var(--body-color);
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: var(--body-color);
 }
 
 body * {
