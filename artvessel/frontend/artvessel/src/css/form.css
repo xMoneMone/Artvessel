@@ -33,12 +33,13 @@ h1 {
 .input-field {
   display: flex;
   flex-direction: column;
-  margin: 2em;
+  margin: 1em;
 }
 
 .button-div {
   display: flex;
   justify-content: center;
+  margin-top: 2em;
 }
 
 form label {
