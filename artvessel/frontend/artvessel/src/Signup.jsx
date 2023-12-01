@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import DarkButton from "./DarkButton"
-import "./css/form.css"
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
 
     return <>
         <div className="form-container">
             <div className="form-background">
-                <h1>LOG IN</h1>
+                <h1>SIGN UP</h1>
                 <form>
                     <div className="input-field">
                         <label>Username:</label>
@@ -29,8 +29,17 @@ function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
+                    <div className="input-field">
+                        <label>Confirm password:</label>
+                        <input
+                            type="text"
+                            required
+                            value={passwordConfirm}
+                            onChange={(e) => setPasswordConfirm(e.target.value)}
+                        />
+                    </div>
                     <div className="button-div">
-                        <DarkButton>LOG IN</DarkButton>
+                        <DarkButton>SIGN UP</DarkButton>
                     </div>
                 </form>
             </div>
