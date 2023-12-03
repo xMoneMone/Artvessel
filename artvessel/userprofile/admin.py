@@ -28,8 +28,7 @@ class USerProfileAdmin(admin.ModelAdmin):
 
 @admin.register(UserSave)
 class PostSaveAdmin(admin.ModelAdmin):
-    list_display = ("id", "post")
+    list_display = ("id", "connection")
 
-    def post(self, obj):
-        user = obj.to_user
-        return f"{shorten(user, 10)}"
+    def connection(self, user):
+        return f"{user.user} -> {user.to_user}"

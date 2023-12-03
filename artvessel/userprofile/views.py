@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+from userprofile.serialisers import all_users_serialiser
 
 
 def login(request):
@@ -18,7 +20,7 @@ def user(request):
 
 
 def all_users(request):
-    return
+    return JsonResponse(all_users_serialiser(request.get_host()))
 
 
 def profile(request):
