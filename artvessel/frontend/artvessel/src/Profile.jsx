@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import ProfileBanner from "./ProfileBanner";
 import Posts from "./posts";
+import Info from "./Info";
+import Shop from "./Shop";
 
 export const ProfileContext = React.createContext()
 
-function Profile() {
+function Profile({section}) {
     const {username} = useParams()
     const [profile, setProfile] = useState("")  
 
@@ -27,7 +29,9 @@ function Profile() {
     return <>
         <ProfileContext.Provider value={profile}>
             <ProfileBanner/>
-            <Posts/>
+            {section == "gallery" && <Posts/>}
+            {section == "info" && <Info/>}
+            {section == "shop" && <Shop/>}
         </ProfileContext.Provider>
     </>
 }

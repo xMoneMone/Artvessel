@@ -6,7 +6,9 @@ def post_serializer(host, post):
         "title": post.title,
         "image": host + post.drawing.url,
         "description": post.description,
-        "priority": post.priority
+        "priority": post.priority,
+        "height": post.drawing.height,
+        "width": post.drawing.width
     }
 
     return current_post

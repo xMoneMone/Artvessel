@@ -2,20 +2,21 @@
 
 .posts {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  padding: 8vh 6vw;
+  justify-content: center;
+  padding: 6vh 3vw;
 }
 
 .post {
-  overflow: hidden;
-  border-radius: 1em;
-  max-width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vw;
+  width: 25vw;
   margin: 2vh;
-}
-
-.posts img {
-  width: 100%;
+  overflow: hidden;
+  border-radius: 0.8em;
+  background-color: rgb(212, 212, 212);
 }
 
 .no-posts {

@@ -1,6 +1,7 @@
 import React, { useContext} from "react";
 import './css/profilebanner.css'
 import { ProfileContext } from "./Profile";
+import { Link } from "react-router-dom";
 
 function ProfileBanner() {
     const profile = useContext(ProfileContext)
@@ -11,7 +12,7 @@ function ProfileBanner() {
         </div>
         <div className="profile-pfp-and-username">
             <div className="profile-pfp">
-                {profile.pfp && <img src={profile.pfp} alt="profile-pfp"></img>}
+                {profile.pfp && <img className={profile.height >= profile.width ? "tall" : "long"} src={profile.pfp} alt="profile-pfp"></img>}
             </div>
             <div className="username-and-save">
                 {profile.username && <h2 className="profile-username">{profile.username}</h2>}
@@ -23,9 +24,15 @@ function ProfileBanner() {
             </div>
         </div>
         <div className="profile-sections">
-            <p className="profile-section">GALLERY</p>
-            <p className="profile-section">INFO</p>
-            <p className="profile-section">SHOP</p>
+            <Link to={'/' + profile.username}>
+                <p className="profile-section">GALLERY</p>
+            </Link>
+            <Link to={'/' + profile.username + '/info'}>
+                <p className="profile-section">INFO</p>
+            </Link>
+            <Link to={'/' + profile.username + '/shop'}>
+                <p className="profile-section">SHOP</p>
+            </Link>
         </div>
     </div>
     </>

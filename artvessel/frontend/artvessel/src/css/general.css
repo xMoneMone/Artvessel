@@ -61,3 +61,11 @@ body * {
 .whole-page {
   min-height: 77vh;
 }
+
+.tall {
+  width: 100%;
+}
+
+.long {
+  height: 100%;
+}

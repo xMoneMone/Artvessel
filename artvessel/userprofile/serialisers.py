@@ -6,8 +6,12 @@ def user_serializer(host_base, userprofile):
 
     if userprofile.profile_pic:
         pfp = host + userprofile.profile_pic.url
+        pfp_height = userprofile.profile_pic.height
+        pfp_width = userprofile.profile_pic.width
     else:
         pfp = ""
+        pfp_height = 0
+        pfp_width = 0
 
     if userprofile.cover_pic:
         cover = host + userprofile.cover_pic.url
@@ -17,6 +21,8 @@ def user_serializer(host_base, userprofile):
     current_profile = {
         "username": userprofile.user.username,
         "pfp": pfp,
+        "height": pfp_height,
+        "width": pfp_width,
         "cover": cover,
         "bio": userprofile.bio,
         "location": userprofile.location,

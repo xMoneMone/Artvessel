@@ -37,7 +37,7 @@ function ProfileCards ({url, title}) {
                 {profiles && profiles.map((profile) => {
                     return(
                         <div key={profile.username} className="cards">
-                            <ProfileCard username={profile.username} pfp={profile.pfp} cover={profile.cover} posts={profile.posts}/>
+                            <ProfileCard username={profile.username} pfp={profile.pfp} cover={profile.cover} posts={profile.posts} height={profile.height} width={profile.width}/>
                         </div>)    
                     })
                 }

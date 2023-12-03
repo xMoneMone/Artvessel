@@ -35,7 +35,9 @@ function App() {
             <Route exact path="/" element={<Home/>} title="Home | Artvessel" />
             <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
             <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
-            <Route exact path="/:username" element={<Profile/>} title="Profile | Artvessel" />
+            <Route exact path="/:username" element={<Profile section="gallery"/>} title="Profile | Artvessel" />
+            <Route exact path="/:username/shop" element={<Profile section="shop"/>} title="Profile | Artvessel" />
+            <Route exact path="/:username/info" element={<Profile section="info"/>} title="Profile | Artvessel" />
           </Routes>
         </div>
         <Footer/>
