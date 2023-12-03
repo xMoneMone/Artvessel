@@ -57,3 +57,7 @@ body {
 body * {
   text-decoration: none;
 }
+
+.whole-page {
+  min-height: 77vh;
+}

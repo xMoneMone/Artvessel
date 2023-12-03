@@ -1,25 +1,32 @@
-import React from "react"
 import { Link } from "react-router-dom";
 
 
-function ProfileCard () {
+function ProfileCard ({username, pfp, cover, posts}) {
+
     return (
     <>
         <Link to="/profile">
             <div className="profile-card">
                 <div className="profile-card-cover">
-                    <img src="" alt=""></img>
+                    {cover && <img src={cover} alt="profile cover"></img>}
                 </div>
                 <div className="profile-card-pfp-and-username">
                     <div className="profile-card-pfp">
-                        <img src="" alt=""></img>
+                        {pfp && <img src={pfp} alt="profile picture"></img>}
                     </div>
-                    <h2 className="profile-card-username">Username</h2>
+                    {username && <h2 className="profile-card-username">{username}</h2>}
+                    {!username && <h2 className="profile-card-username">Loading...</h2>}
                 </div>
                 <div className="profile-card-posts">
-                    <div className="profile-card-post"><img src="" alt=""></img></div>
-                    <div className="profile-card-post"><img src="" alt=""></img></div>
-                    <div className="profile-card-post"><img src="" alt=""></img></div>
+                    <div className="profile-card-post">
+                        {posts[0] && <img src={posts[0].image} alt="post preview"></img>}
+                    </div>
+                    <div className="profile-card-post">
+                        {posts[1] && <img src={posts[1].image} alt="post preview"></img>}
+                    </div>
+                    <div className="profile-card-post">
+                        {posts[2] && <img src={posts[2].image} alt="post preview"></img>}
+                    </div>
                 </div>
             </div>
         </Link>

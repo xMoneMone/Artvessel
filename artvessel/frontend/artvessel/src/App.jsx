@@ -11,12 +11,14 @@ function App() {
   <>
     <Router>
       <Navbar/>
-      <Routes>
-        <Route exact path="/" element={<Home/>} title="Home | Artvessel" />
-        <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
-        <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
-        <Route exact path="/profile" element={<Profile/>} title="Profile | Artvessel" />
-      </Routes>
+      <div className="whole-page">
+        <Routes>
+          <Route exact path="/" element={<Home/>} title="Home | Artvessel" />
+          <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
+          <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
+          <Route exact path="/profile" element={<Profile/>} title="Profile | Artvessel" />
+        </Routes>
+      </div>
       <Footer/>
     </Router>
   </>
