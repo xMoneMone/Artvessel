@@ -52,6 +52,13 @@
   background-color: rgb(162, 162, 162);
   height: var(--profile-cover-height);
   width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.profile-cover img {
+  width: 100%;
 }
 
 .profile-pfp-and-username {
@@ -65,8 +72,8 @@
 }
 
 .profile-pfp {
-  min-height: var(--profile-card-pfp-size);
-  min-width: var(--profile-card-pfp-size);
+  height: var(--profile-card-pfp-size);
+  width: var(--profile-card-pfp-size);
   background-color: rgb(214, 214, 214);
   overflow: hidden;
   border-radius: 100%;
@@ -74,4 +81,8 @@
   border: 0.3em solid var(--card-color);
   position: relative;
   top: -2rem;
+}
+
+.profile-pfp img {
+  height: 100%;
 }

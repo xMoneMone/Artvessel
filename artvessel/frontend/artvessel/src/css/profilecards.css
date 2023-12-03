@@ -36,6 +36,8 @@
   height: var(--profile-card-cover-height);
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .profile-card-cover img {

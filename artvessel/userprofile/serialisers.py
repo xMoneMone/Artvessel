@@ -1,7 +1,7 @@
-from posts.serialisers import user_posts_serializer
+from posts.serialisers import post_serializer
 
 
-def all_users_serializer(host_base, userprofile):
+def user_serializer(host_base, userprofile):
     host = "http://" + host_base
 
     if userprofile.profile_pic:
@@ -32,6 +32,6 @@ def all_users_serializer(host_base, userprofile):
     }
 
     for post in userprofile.user.gallerypost_set.all().order_by('-priority'):
-        current_profile["posts"].append(user_posts_serializer(host_base, post))
+        current_profile["posts"].append(post_serializer(host_base, post))
 
     return current_profile

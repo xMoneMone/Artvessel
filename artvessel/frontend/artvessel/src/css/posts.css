@@ -1,0 +1,23 @@
+@import "general.css";
+
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 8vh 6vw;
+}
+
+.post {
+  overflow: hidden;
+  border-radius: 1em;
+  max-width: 30vw;
+  margin: 2vh;
+}
+
+.posts img {
+  width: 100%;
+}
+
+.no-posts {
+  color: rgb(162, 162, 162);
+}

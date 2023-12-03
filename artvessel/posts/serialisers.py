@@ -1,7 +1,8 @@
-def user_posts_serializer(host, post):
+def post_serializer(host, post):
     host = "http://" + host
 
     current_post = {
+        "id": post.id,
         "title": post.title,
         "image": host + post.drawing.url,
         "description": post.description,
