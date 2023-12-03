@@ -1,5 +1,4 @@
 def user_posts_serializer(host, post):
-    data = []
     host = "http://" + host
 
     current_post = {
