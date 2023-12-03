@@ -20,13 +20,15 @@ function ProfileCards ({url, title}) {
             .then((data) => {
                 setProfiles(data.all_users)
             })
-        }, 1000)
+        }, 500)
     }, [])
 
     return (
         <>
             <div className="cards-and-title">
                 <h1>{title}</h1>
+                {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
+                {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
                 {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
                 {profiles && profiles.map((profile) => {
                     return(

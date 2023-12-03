@@ -15,7 +15,7 @@ function ProfileCard ({username, pfp, cover, posts}) {
                         {pfp && <img src={pfp} alt="profile picture"></img>}
                     </div>
                     {username && <h2 className="profile-card-username">{username}</h2>}
-                    {!username && <h2 className="profile-card-username">Loading...</h2>}
+                    {!username && <h2 className="profile-card-username profile-card-loading"><span>Loading...</span></h2>}
                 </div>
                 <div className="profile-card-posts">
                     <div className="profile-card-post">
