@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import default_pfp from "./images/default-pfp.png"
 
 
 function ProfileCard ({username, pfp, cover, posts}) {
@@ -13,6 +14,7 @@ function ProfileCard ({username, pfp, cover, posts}) {
                 <div className="profile-card-pfp-and-username">
                     <div className="profile-card-pfp">
                         {pfp && <img src={pfp} alt="profile picture"></img>}
+                        {!pfp && <img src={default_pfp} alt="profile picture"></img>}
                     </div>
                     {username && <h2 className="profile-card-username">{username}</h2>}
                     {!username && <h2 className="profile-card-username profile-card-loading"><span>Loading...</span></h2>}

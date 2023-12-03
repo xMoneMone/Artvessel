@@ -20,13 +20,17 @@ function ProfileCards ({url, title}) {
             .then((data) => {
                 setProfiles(data.all_users)
             })
-        }, 500)
+            .catch((err) => {
+                console.log(err.message)
+            })
+        }, 1000)
     }, [])
 
     return (
         <>
             <div className="cards-and-title">
-                <h1>{title}</h1>
+                {profiles && <h1>{title}</h1>}
+                {!profiles && <h1>Loading...</h1>}
                 {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
                 {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
                 {!profiles && <ProfileCard username="" pfp="" cover="" posts=""/>}
