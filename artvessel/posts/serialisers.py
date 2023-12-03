@@ -1,15 +1,12 @@
-def user_posts_serialiser(user, host):
+def user_posts_serializer(host, post):
     data = []
     host = "http://" + host
 
-    for post in user.gallerypost_set.all().order_by('-priority'):
-        current_post = {
-            "title": post.title,
-            "image": host + post.drawing.url,
-            "description": post.description,
-            "priority": post.priority
-        }
+    current_post = {
+        "title": post.title,
+        "image": host + post.drawing.url,
+        "description": post.description,
+        "priority": post.priority
+    }
 
-        data.append(current_post)
-
-    return data
+    return current_post

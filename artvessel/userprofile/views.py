@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from userprofile.serialisers import all_users_serialiser
+from userprofile.models import UserProfile, UserSave
+from django.db.models import Count
+from userprofile.serialisers import all_users_serializer
 
 
 def login(request):
@@ -20,7 +22,13 @@ def user(request):
 
 
 def all_users(request):
-    return JsonResponse(all_users_serialiser(request.get_host()))
+    userprofiles = UserProfile.objects.all().annotate(usersave_count=Count('usersave')).order_by('-usersave_count')
+    data = {"all_users": []}
+
+    for userprofile in userprofiles:
+        data["all_users"].append(all_users_serializer(request.get_host(), userprofile))
+
+    return JsonResponse(data)
 
 
 def profile(request):

@@ -6,7 +6,7 @@ function ProfileCard ({username, pfp, cover, posts}) {
 
     return (
     <>
-        <Link to="/profile">
+        <Link to={"/" + username}>
             <div className="profile-card">
                 <div className="profile-card-cover">
                     {cover && <img src={cover} alt="profile cover"></img>}
