@@ -35,7 +35,7 @@ function Create() {
                         />
                     </div>
                     <div className="input-field">
-                        <label>Title:</label>
+                        <label>Title:*</label>
                         <input
                             type="text"
                             required

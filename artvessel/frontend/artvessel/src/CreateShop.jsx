@@ -36,7 +36,7 @@ function CreateShop() {
                         />
                     </div>
                     <div className="input-field">
-                        <label>Title:</label>
+                        <label>Title:*</label>
                         <input
                             type="text"
                             required
@@ -45,7 +45,7 @@ function CreateShop() {
                         />
                     </div>
                     <div className="input-field">
-                        <label>Price:</label>
+                        <label>Price:*</label>
                         <input
                             type="text"
                             required
