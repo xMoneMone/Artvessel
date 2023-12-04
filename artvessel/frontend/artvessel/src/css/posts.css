@@ -19,6 +19,18 @@
   background-color: rgb(212, 212, 212);
 }
 
+.post img {
+  transition: ease-in-out 0.3s;
+}
+
+.post .long:hover {
+  height: 110%;
+}
+
+.post .tall:hover {
+  width: 110%;
+}
+
 .no-posts {
   color: rgb(162, 162, 162);
 }
