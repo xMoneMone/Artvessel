@@ -47,6 +47,7 @@
   height: 1.6em;
   fill: var(--accent-color);
   transition: all ease-in-out 200ms;
+  cursor: pointer;
 }
 
 .saved:hover {

@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import React, { useEffect, useState } from "react";
 import Create from "./Create";
 import CreateShop from "./CreateShop";
+import PostDetails from "./PostDetails";
 
 export const UserContext = React.createContext()
 
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
             <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
             <Route exact path="/post/create" element={<Create/>} title="Create | Artvessel" />
+            <Route exact path="/post/:pk" element={<PostDetails/>} title="Create | Artvessel" />
             <Route exact path="/shop/create" element={<CreateShop/>} title="Create | Artvessel" />
             <Route exact path="/:username" element={<Profile section="gallery"/>} title="Profile | Artvessel" />
             <Route exact path="/:username/shop" element={<Profile section="shop"/>} title="Profile | Artvessel" />

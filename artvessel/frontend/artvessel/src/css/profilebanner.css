@@ -42,6 +42,7 @@
   height: var(--profile-save-height);
   fill: var(--profile-save-color);
   transition: all ease-in-out 200ms;
+  cursor: pointer;
 }
 
 .profile-icon:hover {
