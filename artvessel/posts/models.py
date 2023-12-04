@@ -19,7 +19,7 @@ class ShopPost(models.Model):
     title = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     image = models.ImageField(upload_to='images', validators=(validate_file_size,))
-    description = models.TextField(max_length=2000, blank=True, null=True)
+    description = models.TextField(max_length=400, blank=True, null=True)
 
 
 class PostSave(models.Model):
