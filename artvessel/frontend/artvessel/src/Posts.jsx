@@ -11,7 +11,7 @@ function Posts() {
                                         <h2>No posts</h2>
                                      </div>}
                 {profile && profile.posts.map((post) => {
-                    return <Link key={post.id} to=""><div className="post">
+                    return <Link key={post.id} to={"/post/" + post.id}><div className="post">
                                 <img className={post.height >= post.width ? "tall" : "long"}
                                 src={post.image} alt={post.title}></img>
                             </div></Link>
