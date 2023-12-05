@@ -1,0 +1,69 @@
+@import "general.css";
+.info-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 6vh 0;
+  color: rgb(92, 92, 92);
+}
+
+.info-bit,
+.info-right,
+.info-link {
+  background-color: white;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 0.8em;
+}
+
+.info-bit {
+  display: flex;
+  align-items: center;
+}
+
+.info-bit svg {
+  margin-right: 0.5em;
+}
+
+.info-left {
+  max-width: 20vw;
+}
+
+.info-right {
+  width: 30vw;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.info-right p {
+  margin: 0;
+}
+
+.info-top {
+  display: flex;
+}
+
+.info-links {
+  display: flex;
+}
+
+.info-link {
+  transition: ease-in-out 200ms;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-link:hover {
+  background-color: rgb(222, 222, 222);
+}
+
+.info-container svg {
+  height: 1.4em;
+  fill: rgb(67, 67, 67);
+}
