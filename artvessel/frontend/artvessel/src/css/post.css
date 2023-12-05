@@ -39,14 +39,14 @@
   color: var(--navbar-color);
 }
 
-.description {
+.post-description {
   color: rgb(128, 128, 128);
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.description p {
+.post-description p {
   overflow-wrap: break-word;
   width: 100%;
   max-width: 90vw;
