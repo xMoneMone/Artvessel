@@ -1,16 +1,6 @@
 from django.http import JsonResponse
-from django.shortcuts import render
-
 from posts.models import GalleryPost
-from posts.serialisers import post_serializer
-
-
-def all_posts(request):
-    return
-
-
-def all_shop(request):
-    return
+from posts.serialisers import post_serializer, shop_serializer
 
 
 def post(request, pk):
