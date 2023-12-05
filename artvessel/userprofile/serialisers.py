@@ -1,4 +1,4 @@
-from posts.serialisers import post_serializer
+from posts.serialisers import post_serializer, shop_serializer
 
 
 def user_serializer(host_base, userprofile):
@@ -34,10 +34,14 @@ def user_serializer(host_base, userprofile):
         "link4": userprofile.link4,
         "link5": userprofile.link5,
         "shop_info": userprofile.shop_info,
-        "posts": []
+        "posts": [],
+        "shop": []
     }
 
     for post in userprofile.user.gallerypost_set.all().order_by('-priority'):
         current_profile["posts"].append(post_serializer(host_base, post))
+
+    for shop in userprofile.user.shoppost_set.all().order_by('-priority'):
+        current_profile["shop"].append(shop_serializer(host_base, shop))
 
     return current_profile
