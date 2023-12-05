@@ -17,9 +17,10 @@ class ShopPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=50)
-    price = models.CharField(max_length=50)
+    price = models.CharField(max_length=20)
     image = models.ImageField(upload_to='images', validators=(validate_file_size,))
     description = models.TextField(max_length=400, blank=True, null=True)
+    priority = models.IntegerField(validators=([MaxValueValidator(1000000)]), default=0)
 
 
 class PostSave(models.Model):
