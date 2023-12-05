@@ -1,8 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState} from "react";
+import './css/shop.css'
+import { Link } from "react-router-dom";
 import { ProfileContext } from "./Profile";
 
-export default function Shop(){
+function Shop() {
     const profile = useContext(ProfileContext)
 
-    return <h2>Shop</h2>
+    return <div className="shop-container">
+                {profile && !profile.shop_info && profile.shop.length === 0 && <div className="no-posts">
+                                        <h2>No shop</h2>
+                                     </div>}
+                {profile && profile.shop_info && <div className="shop-info"><p>{profile.shop_info}</p></div>}
+                {profile && profile.shop.length != 0 && <Link to="/shop/create"><div className="add-shop">NEW LISTING</div></Link>}
+                {profile && profile.shop.map((shopListing) => {
+                    return <Link key={shopListing.id} to={"/shop/" + shopListing.id}>
+                            <div className="shop">
+                                <h2 className="shop-title">{shopListing.title}</h2>
+                                <h3 className="shop-price">{shopListing.price}</h3>
+                                <p className="shop-description">{shopListing.description}</p>
+                                <div className="shop-image">
+                                    <img className={shopListing.height >=shopListing.width ? "tall" : "long"}
+                                    src={shopListing.image} alt={shopListing.title}></img>
+                                </div>
+                            </div>
+                        </Link>
+                })}
+            </div>
 }
+
+export default Shop
