@@ -11,7 +11,6 @@ function Shop() {
                                         <h2>No shop</h2>
                                      </div>}
                 {profile && profile.shop_info && <div className="shop-info"><p>{profile.shop_info}</p></div>}
-                {profile && profile.shop.length != 0 && <Link to="/shop/create"><div className="add-shop">NEW LISTING</div></Link>}
                 {profile && profile.shop.map((shopListing) => {
                     return <Link key={shopListing.id} to={"/shop/" + shopListing.id}>
                             <div className="shop">

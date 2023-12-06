@@ -37,13 +37,6 @@
   border-radius: 0.8em;
 }
 
-.add-shop {
-  padding: 1em 2em;
-  margin-bottom: 0;
-  color: rgb(48, 48, 48);
-  transition: ease-in-out 200ms;
-}
-
 .add-shop:hover {
   background-color: rgb(245, 245, 245);
 }
