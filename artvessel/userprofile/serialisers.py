@@ -35,7 +35,9 @@ def user_serializer(host_base, userprofile):
         "link5": userprofile.link5,
         "shop_info": userprofile.shop_info,
         "posts": [],
-        "shop": []
+        "shop": [],
+        "shop_theme1": userprofile.shop_theme1,
+        "shop_theme2": userprofile.shop_theme2
     }
 
     for post in userprofile.user.gallerypost_set.all().order_by('-priority'):

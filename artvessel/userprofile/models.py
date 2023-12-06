@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from userprofile.validators import validate_file_size
+from userprofile.validators import validate_file_size, hex_code_validator
 from django.core.validators import MaxValueValidator
 
 
@@ -19,6 +19,8 @@ class UserProfile(models.Model):
     link4 = models.URLField(blank=True, null=True)
     link5 = models.URLField(blank=True, null=True)
     shop_info = models.TextField(max_length=2000, blank=True, null=True)
+    shop_theme1 = models.CharField(max_length=7, validators=(hex_code_validator,), default="#ffbdbd")
+    shop_theme2 = models.CharField(max_length=7, validators=(hex_code_validator,), default="#ffeded")
 
 
 class UserSave(models.Model):
