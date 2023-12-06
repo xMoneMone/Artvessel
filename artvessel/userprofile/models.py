@@ -9,7 +9,7 @@ class UserProfile(models.Model):
 
     profile_pic = models.ImageField(upload_to='images', validators=(validate_file_size,), blank=True, null=True)
     cover_pic = models.ImageField(upload_to='images', validators=(validate_file_size,), blank=True, null=True)
-    bio = models.TextField(max_length=2000, blank=True, null=True)
+    bio = models.TextField(max_length=400, blank=True, null=True)
     location = models.CharField(max_length=45, blank=True, null=True)
     phone = models.IntegerField(validators=[MaxValueValidator(999999999999999999)], blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
