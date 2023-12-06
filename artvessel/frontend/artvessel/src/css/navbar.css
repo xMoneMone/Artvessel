@@ -38,10 +38,6 @@
   margin-left: var(--items-margin);
 }
 
-.navbar-pfp > img {
-  width: 100%;
-}
-
 .saved {
   margin-left: var(--items-margin);
   height: 1.6em;

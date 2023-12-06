@@ -15,19 +15,19 @@ export const UserContext = React.createContext()
 
 function App() {
   const [user, setUser] = useState("")
+  const fake_user = "/admin"
 
   useEffect(() => {
-        // fetch("http://127.0.0.1:8000/users-api/user")
-        // .then(res => {
-        //     return res.json()
-        // })
-        // .then((data) => {
-        //     setUser(data)
-        // })
-        // .catch((err) => {
-        //     console.log(err.message)
-        // })
-        setUser("admin")
+        fetch("http://127.0.0.1:8000/users-api/user" + fake_user)
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            setUser(data)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
   }, [])
 
   return (
