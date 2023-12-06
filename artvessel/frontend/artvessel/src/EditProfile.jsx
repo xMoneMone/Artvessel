@@ -49,7 +49,6 @@ function EditProfile() {
                         <input
                             id="cover"
                             type="file"
-                            required
                             accept=".png,.jpg,.jpeg"
                             value={cover}
                             onChange={(e) => {
@@ -73,7 +72,6 @@ function EditProfile() {
                         <input
                             id="pfp"
                             type="file"
-                            required
                             accept=".png,.jpg,.jpeg"
                             value={pfp}
                             onChange={(e) => {
@@ -110,7 +108,7 @@ function EditProfile() {
                         <label>Location:</label>
                         <input
                             type="text"
-                            required
+                            maxLength="45"
                             value={location ? location : user.location}
                             onChange={(e) => setLocation(e.target.value)}
                         />
@@ -119,7 +117,6 @@ function EditProfile() {
                         <label>Phone:</label>
                         <input
                             type="text"
-                            required
                             value={phone ? phone : user.phone}
                             onChange={(e) => setPhone(e.target.value)}
                         />
@@ -128,7 +125,6 @@ function EditProfile() {
                         <label>Email:</label>
                         <input
                             type="text"
-                            required
                             value={email ? email : user.email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -137,7 +133,6 @@ function EditProfile() {
                         <label>Links:</label>
                         <input
                             type="text"
-                            required
                             value={link1 ? link1 : user.link1}
                             onChange={(e) => setLink1(e.target.value)}
                         />
@@ -145,7 +140,6 @@ function EditProfile() {
                     <div className="input-field links">
                         <input
                             type="text"
-                            required
                             value={link2 ? link2 : user.link2}
                             onChange={(e) => setLink2(e.target.value)}
                         />
@@ -153,7 +147,6 @@ function EditProfile() {
                     <div className="input-field links">
                         <input
                             type="text"
-                            required
                             value={link3 ? link3 : user.link3}
                             onChange={(e) => setLink3(e.target.value)}
                         />
@@ -161,7 +154,6 @@ function EditProfile() {
                     <div className="input-field links">
                         <input
                             type="text"
-                            required
                             value={link4 ? link4 : user.link4}
                             onChange={(e) => setLink4(e.target.value)}
                         />
@@ -169,7 +161,6 @@ function EditProfile() {
                     <div className="input-field links">
                         <input
                             type="text"
-                            required
                             value={link5 ? link5 : user.link5}
                             onChange={(e) => setLink5(e.target.value)}
                         />
@@ -178,7 +169,7 @@ function EditProfile() {
                     <div className="input-field">
                         <label>Shop info:</label>
                         <textarea
-                            maxLength="400"
+                            maxLength="2000"
                             className="description"
                             value={shopInfo ? shopInfo : user.shop_info}
                             onChange={(e) => setShopInfo(e.target.value)}
@@ -190,7 +181,7 @@ function EditProfile() {
                             <div className="color-preview" style={{"backgroundColor": shopTheme1 ? shopTheme1 : user.shop_theme1}}></div>
                             <input
                                 type="text"
-                                required
+                                maxLength="7"
                                 value={shopTheme1 ? shopTheme1 : user.shop_theme1}
                                 placeholder={user.shop_theme1}
                                 onChange={(e) => setShopTheme1(e.target.value)}
@@ -202,7 +193,7 @@ function EditProfile() {
                             <div className="color-preview" style={{"backgroundColor": shopTheme2 ? shopTheme2 : user.shop_theme2}}></div>
                             <input
                                 type="text"
-                                required
+                                maxLength="7"
                                 value={shopTheme2 ? shopTheme2 : user.shop_theme2}
                                 placeholder={user.shop_theme2}
                                 onChange={(e) => setShopTheme2(e.target.value)}
