@@ -75,7 +75,9 @@ textarea {
   padding: 1em 1em;
 }
 
-#drawing {
+#drawing,
+#pfp,
+#cover {
   display: none;
 }
 
@@ -85,7 +87,9 @@ textarea {
   justify-content: center;
 }
 
-.drawing_label {
+.drawing_label,
+.pfp_label,
+.cover_label {
   cursor: pointer;
   background-color: rgb(189, 189, 189);
   height: 10em;
@@ -97,12 +101,16 @@ textarea {
   margin-top: 1em;
 }
 
-.drawing_label svg {
+.drawing_label svg,
+.pfp_label svg,
+.cover_label svg {
   height: 2em;
   fill: white;
 }
 
-.drawing-preview {
+.drawing-preview,
+.pfp-preview,
+.cover-preview {
   cursor: pointer;
   overflow: hidden;
   border-radius: 0.8em;
@@ -110,7 +118,20 @@ textarea {
   margin-top: 1em;
 }
 
-.drawing-preview > img {
+.cover_label {
+  position: absolute;
+}
+
+.cover-preview {
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.drawing-preview > img,
+.cover-preview > img {
   width: 100%;
 }
 
@@ -121,4 +142,21 @@ textarea {
 .create-button > * {
   padding-left: 3em;
   padding-right: 3em;
+}
+
+.pfp_label,
+.pfp-preview {
+  height: 12em;
+  width: 12em;
+  border-radius: 10em;
+  position: relative;
+  top: 2em;
+  border: 0.6em solid white;
+  margin-bottom: 3em;
+}
+
+.pfp-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
