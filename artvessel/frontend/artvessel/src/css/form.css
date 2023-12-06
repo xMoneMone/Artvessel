@@ -113,3 +113,12 @@ textarea {
 .drawing-preview > img {
   width: 100%;
 }
+
+.create-button {
+  margin: 0.3em;
+}
+
+.create-button > * {
+  padding-left: 3em;
+  padding-right: 3em;
+}
