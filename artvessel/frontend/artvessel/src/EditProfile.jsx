@@ -6,9 +6,6 @@ import { UserContext } from "./App";
 function EditProfile() {
     const user = useContext(UserContext)
 
-    const [title, setTitle] = useState('');
-    const [descritpion, setDescription] = useState('');
-    const [price, setPrice] = useState('');
     const [cover, setCover] = useState('');
     const [coverPreview, setCoverPreview] = useState(''); 
     const [pfp, setPfp] = useState('');
@@ -16,11 +13,28 @@ function EditProfile() {
     const [height, setHeight] = useState(''); 
     const [width, setWidth] = useState(''); 
 
+    const [bio, setBio] = useState('');
+    const [location, setLocation] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [link1, setLink1] = useState('');
+    const [link2, setLink2] = useState('');
+    const [link3, setLink3] = useState('');
+    const [link4, setLink4] = useState('');
+    const [link5, setLink5] = useState('');
+    const [shopInfo, setShopInfo] = useState('');
+    const [shopTheme1, setShopTheme1] = useState('');
+    const [shopTheme2, setShopTheme2] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return <>
         <div className="form-container">
             <div className="form-background">
                 <h1>EDIT PROFILE</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                 <div className="input-field">
                         <label htmlFor="cover">
                             {!user.cover && !cover &&
@@ -82,32 +96,118 @@ function EditProfile() {
                             }
                         />
                     </div>
+                    <h2>INFO</h2>
                     <div className="input-field">
-                        <label>Title:*</label>
-                        <input
-                            type="text"
-                            required
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <label>Price:*</label>
-                        <input
-                            type="text"
-                            required
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <label>Description:</label>
+                        <label>Bio:</label>
                         <textarea
                             maxLength="400"
                             className="description"
-                            value={descritpion}
-                            onChange={(e) => setDescription(e.target.value)}
+                            value={bio ? bio : user.bio}
+                            onChange={(e) => setBio(e.target.value)}
                         />
+                    </div>
+                    <div className="input-field">
+                        <label>Location:</label>
+                        <input
+                            type="text"
+                            required
+                            value={location ? location : user.location}
+                            onChange={(e) => setLocation(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field">
+                        <label>Phone:</label>
+                        <input
+                            type="text"
+                            required
+                            value={phone ? phone : user.phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field">
+                        <label>Email:</label>
+                        <input
+                            type="text"
+                            required
+                            value={email ? email : user.email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <label>Links:</label>
+                        <input
+                            type="text"
+                            required
+                            value={link1 ? link1 : user.link1}
+                            onChange={(e) => setLink1(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <input
+                            type="text"
+                            required
+                            value={link2 ? link2 : user.link2}
+                            onChange={(e) => setLink2(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <input
+                            type="text"
+                            required
+                            value={link3 ? link3 : user.link3}
+                            onChange={(e) => setLink3(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <input
+                            type="text"
+                            required
+                            value={link4 ? link4 : user.link4}
+                            onChange={(e) => setLink4(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <input
+                            type="text"
+                            required
+                            value={link5 ? link5 : user.link5}
+                            onChange={(e) => setLink5(e.target.value)}
+                        />
+                    </div>
+                    <h2>SHOP</h2>
+                    <div className="input-field">
+                        <label>Shop info:</label>
+                        <textarea
+                            maxLength="400"
+                            className="description"
+                            value={shopInfo ? shopInfo : user.shop_info}
+                            onChange={(e) => setShopInfo(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field links">
+                        <label className="color-input-label">Shop theme (hexcodes):</label>
+                        <div className="color-input">
+                            <div className="color-preview" style={{"backgroundColor": shopTheme1 ? shopTheme1 : user.shop_theme1}}></div>
+                            <input
+                                type="text"
+                                required
+                                value={shopTheme1 ? shopTheme1 : user.shop_theme1}
+                                placeholder={user.shop_theme1}
+                                onChange={(e) => setShopTheme1(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className="input-field links">
+                        <div className="color-input">
+                            <div className="color-preview" style={{"backgroundColor": shopTheme2 ? shopTheme2 : user.shop_theme2}}></div>
+                            <input
+                                type="text"
+                                required
+                                value={shopTheme2 ? shopTheme2 : user.shop_theme2}
+                                placeholder={user.shop_theme2}
+                                onChange={(e) => setShopTheme2(e.target.value)}
+                            />
+                        </div>
                     </div>
                     <div className="button-div">
                         <DarkButton>SAVE</DarkButton>

@@ -160,3 +160,39 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+
+form h2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: rgb(66, 66, 66);
+}
+
+.links {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.color-input-label {
+  margin-bottom: 0.2em;
+}
+
+.color-input {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2em 0;
+}
+
+.color-input input {
+  width: 20em;
+  margin: 0;
+}
+
+.color-preview {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.2em;
+  margin-right: 0.5em;
+}
