@@ -19,16 +19,18 @@ function EditProfile() {
     return <>
         <div className="form-container">
             <div className="form-background">
-                <h1>SHOP LISTING</h1>
+                <h1>EDIT PROFILE</h1>
                 <form>
                 <div className="input-field">
                         <label htmlFor="cover">
-                            {!cover &&
+                            {!user.cover && !cover &&
                             <div className="cover_label">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
                             </div>}
                             {cover &&
                             <div className="cover-preview"><img src={coverPreview} alt="post preview"></img></div>}
+                            {!cover && user.cover &&
+                            <div className="cover-preview"><img src={user.cover} alt="post preview"></img></div>}
                         </label>
                         <input
                             id="cover"
@@ -45,12 +47,14 @@ function EditProfile() {
                     </div>
                     <div className="input-field">
                         <label htmlFor="pfp">
-                            {!pfp &&
+                            {!user.pfp && !pfp &&
                             <div className="pfp_label">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
                             </div>}
                             {pfp &&
                             <div className="pfp-preview"><img src={pfpPreview} className={height >= width ? "tall" : "long"} alt="post preview"></img></div>}
+                            {user.pfp && !pfp &&
+                            <div className="pfp-preview"><img src={user.pfp} className={user.height >= user.width ? "tall" : "long"} alt="post preview"></img></div>}
                         </label>
                         <input
                             id="pfp"
@@ -106,7 +110,7 @@ function EditProfile() {
                         />
                     </div>
                     <div className="button-div">
-                        <DarkButton>POST</DarkButton>
+                        <DarkButton>SAVE</DarkButton>
                     </div>
                 </form>
             </div>

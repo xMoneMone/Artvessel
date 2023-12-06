@@ -16,7 +16,7 @@ export const UserContext = React.createContext()
 
 function App() {
   const [user, setUser] = useState("")
-  const fake_user = "/admin"
+  const fake_user = "/test"
 
   useEffect(() => {
         fetch("http://127.0.0.1:8000/users-api/user" + fake_user)
