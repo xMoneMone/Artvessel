@@ -6,11 +6,15 @@ function Login() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return <>
         <div className="form-container">
             <div className="form-background">
                 <h1>SIGN UP</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="input-field">
                         <label>Username:</label>
                         <input
