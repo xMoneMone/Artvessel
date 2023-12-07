@@ -28,6 +28,34 @@ function EditProfile() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("this submits")
+
+        const toSend = {
+            user: user.username,
+            cover: cover,
+            pfp: pfp,
+            bio: bio,
+            location: location,
+            phone: phone,
+            email: email, 
+            link1: link1,
+            link2: link2,
+            link3: link3,
+            link4: link4,
+            link5: link5,
+            shop_info: shopInfo,
+            shop_theme1: shopTheme1,
+            shop_theme2: shopTheme2
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(toSend)
+        }
+        fetch('http://127.0.0.1:8000/users-api/user/edit', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }))
     }
 
     return <>
@@ -201,7 +229,8 @@ function EditProfile() {
                         </div>
                     </div>
                     <div className="button-div">
-                        <DarkButton>SAVE</DarkButton>
+                        <input id="submit-button" type="submit"></input>
+                        <label htmlFor="submit-button"><DarkButton>SAVE</DarkButton></label>
                     </div>
                 </form>
             </div>

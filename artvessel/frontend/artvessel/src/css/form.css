@@ -196,3 +196,7 @@ form h2 {
   border-radius: 0.2em;
   margin-right: 0.5em;
 }
+
+#submit-button {
+  display: none;
+}

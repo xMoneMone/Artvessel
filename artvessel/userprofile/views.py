@@ -23,6 +23,11 @@ def user(request):
     return JsonResponse({})
 
 
+def user_edit(request):
+    print(request)
+    return JsonResponse({})
+
+
 def all_users(request):
     userprofiles = UserProfile.objects.all().annotate(usersave_count=Count('usersave')).order_by('-usersave_count')
     data = {"all_users": []}
