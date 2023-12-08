@@ -8,7 +8,7 @@ import './css/navbar.css'
 import { UserContext } from "./App";
 
 function Navbar() {
-    const user = useContext(UserContext)
+    const [user, setUser, token] = useContext(UserContext)
 
     return  (
     <div className="navbar">

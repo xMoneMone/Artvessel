@@ -200,3 +200,9 @@ form h2 {
 #submit-button {
   display: none;
 }
+
+.wrong {
+  display: flex;
+  justify-content: center;
+  color: rgb(175, 99, 142);
+}

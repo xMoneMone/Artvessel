@@ -4,7 +4,7 @@ import "./css/form.css"
 import { UserContext } from "./App";
 
 function EditProfile() {
-    const user = useContext(UserContext)
+    const [user, token] = useContext(UserContext)
 
     const [cover, setCover] = useState('');
     const [coverPreview, setCoverPreview] = useState(''); 
@@ -28,7 +28,6 @@ function EditProfile() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("this submits")
 
         const toSend = {
             user: user.username,
@@ -50,12 +49,14 @@ function EditProfile() {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(toSend)
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded'},
+            body: JSON.stringify(toSend)    
         }
         fetch('http://127.0.0.1:8000/users-api/user/edit', requestOptions)
             .then(response => response.json())
-            .then(data => this.setState({ postId: data.id }))
+            .then((data) => {
+                console.log(data)})
     }
 
     return <>

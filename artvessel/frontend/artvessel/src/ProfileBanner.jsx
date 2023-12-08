@@ -7,7 +7,7 @@ import { UserContext } from "./App";
 
 function ProfileBanner() {
     const profile = useContext(ProfileContext)
-    const user = useContext(UserContext)
+    const [user, token] = useContext(UserContext)
 
     return <>
     <div className="profile">

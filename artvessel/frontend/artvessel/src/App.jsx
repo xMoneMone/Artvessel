@@ -16,10 +16,15 @@ export const UserContext = React.createContext()
 
 function App() {
   const [user, setUser] = useState("")
-  const fake_user = "/admin"
+  const [token, setToken] = useState("")
+  const [username, setUsername] = useState(document.cookie.replace("current_user=", ""))
+
+  function change_user(name) {
+    setUsername(name)
+  }
 
   useEffect(() => {
-        fetch("http://127.0.0.1:8000/users-api/user" + fake_user)
+        fetch("http://127.0.0.1:8000/users-api/user/" + username)
         .then(res => {
             return res.json()
         })
@@ -29,12 +34,23 @@ function App() {
         .catch((err) => {
             console.log(err.message)
         })
-  }, [])
+
+        fetch("http://127.0.0.1:8000/users-api/csrf")
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            setToken(data.token)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+  }, [username])
 
   return (
   <>
     <Router>
-      <UserContext.Provider value={user}>
+      <UserContext.Provider value={[user, change_user, token]}>
         <Navbar/>
         <div className="whole-page">
           <Routes>
