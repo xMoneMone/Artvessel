@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from userprofile.models import UserProfile, UserSave
+from userprofile.forms import CreateUserForm
 from django.db.models import Count
 from userprofile.serialisers import user_serializer
 from django.views.decorators.csrf import csrf_exempt
@@ -26,23 +27,29 @@ def login(request):
     if cur_user is not None:
         authenticated = User.objects.get(username=username)
         return JsonResponse({"user": authenticated.username})
-    print(cur_user)
     return JsonResponse({})
-
-
-def logout(request):
-    return
 
 
 @csrf_exempt
 def signup(request):
-    return
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
 
-
-def user(request):
-    cur_user = request.user
-    print(cur_user)
-    return JsonResponse({})
+    form = CreateUserForm(body)
+    if form.is_valid():
+        form.save()
+        cur_user = User.objects.get(username=body['username'])
+        user_profile = UserProfile(user=cur_user)
+        user_profile.save()
+        return JsonResponse({'status': 'ok',
+                             'user': cur_user.username})
+    else:
+        to_send = {'status': []}
+        errors = json.loads(form.errors.as_json())
+        for key, item in errors.items():
+            for error in item:
+                to_send['status'].append(error['message'])
+        return JsonResponse(to_send)
 
 
 @csrf_exempt

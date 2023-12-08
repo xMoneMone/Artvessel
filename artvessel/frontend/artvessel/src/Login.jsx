@@ -29,7 +29,6 @@ function Login() {
             .then((data) => {
                 if (data.user){
                     change_user(data.user)
-                    console.log("a")
                     document.cookie = "current_user=" + data.user
                     navigate('/')
                 }
