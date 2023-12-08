@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import DarkButton from "./DarkButton"
 import "./css/form.css"
 import { UserContext } from "./App";
+import { Link, useNavigate } from "react-router-dom";
 
 function EditProfile() {
-    const [user, token] = useContext(UserContext)
+    const [user, change_user, token] = useContext(UserContext)
+    const navigate = useNavigate()
 
     const [cover, setCover] = useState('');
     const [coverPreview, setCoverPreview] = useState(''); 
@@ -25,6 +27,17 @@ function EditProfile() {
     const [shopInfo, setShopInfo] = useState('');
     const [shopTheme1, setShopTheme1] = useState('');
     const [shopTheme2, setShopTheme2] = useState('');
+
+    function edit_logout(){
+        if (confirm("Are you sure?")){
+            document.cookie = "current_user" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+            navigate("/login")
+            window.location.reload()
+        }
+        else {
+            return false
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -58,6 +71,13 @@ function EditProfile() {
             .then((data) => {
                 console.log(data)})
     }
+
+    useEffect(() => {
+    if (!document.cookie.replace("current_user=", "")){
+       navigate("/login")
+    }   
+  }, [])
+    
 
     return <>
         <div className="form-container">
@@ -229,9 +249,11 @@ function EditProfile() {
                             />
                         </div>
                     </div>
-                    <div className="button-div">
+                    <div className="edit-button-div">
+                        <button className="edit-button edit-logout" onClick={edit_logout}>Log out</button>
                         <input id="submit-button" type="submit"></input>
                         <label htmlFor="submit-button"><DarkButton>SAVE</DarkButton></label>
+                        <button className="edit-button edit-delete">Delete</button>
                     </div>
                 </form>
             </div>

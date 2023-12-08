@@ -42,6 +42,12 @@ h1 {
   margin-top: 2em;
 }
 
+.edit-button-div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
 form label {
   color: var(--navbar-color);
 }
@@ -205,4 +211,19 @@ form h2 {
   display: flex;
   justify-content: center;
   color: rgb(175, 99, 142);
+}
+
+.edit-button {
+  border: none;
+  background-color: white;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.edit-logout {
+  color: rgb(161, 177, 221);
+}
+
+.edit-delete {
+  color: rgb(221, 161, 194);
 }
