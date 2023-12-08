@@ -1,7 +1,7 @@
 from django.http import JsonResponse
-from posts.models import GalleryPost
+from posts.models import GalleryPost, ShopPost
 from posts.serialisers import post_serializer, shop_serializer
-from posts.forms import GalleryPostForm
+from posts.forms import GalleryPostForm, ShopPostForm
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -43,11 +43,40 @@ def post_create(request):
         return JsonResponse(to_send)
 
 
+@csrf_exempt
+def shop_create(request):
+    data = request.POST
+
+    body = {
+        'user': data.get('user', None),
+        'title': data.get('title', None),
+        'price': data.get('price', None),
+        'image': request.FILES.get('image', None),
+        'description': data.get('description', None)
+    }
+
+    cur_user = body['user']
+    body['user'] = User.objects.get(username=cur_user)
+
+    cur_post = ShopPost(user=body['user'])
+    cur_post.image.save(body['image'].name, body['image'])
+
+    form = ShopPostForm(body, instance=cur_post)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({'status': 'ok'})
+    else:
+        to_send = {'status': []}
+        errors = json.loads(form.errors.as_json())
+        for key, item in errors.items():
+            for error in item:
+                to_send['status'].append(error['message'])
+        return JsonResponse(to_send)
+
+
 def shop(request):
     return
 
 
 def post_save(request):
     return
-
-

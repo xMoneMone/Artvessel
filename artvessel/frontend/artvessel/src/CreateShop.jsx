@@ -1,19 +1,59 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DarkButton from "./DarkButton"
 import "./css/form.css"
+import { UserContext } from "./App";
+import { useNavigate } from "react-router-dom";
 
 function CreateShop() {
     const [title, setTitle] = useState('');
     const [descritpion, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [drawing, setDrawing] = useState('');
+    const [drawingFile, setDrawingFile] = useState('');
     const [drawingPreview, setDrawingPreview] = useState('');
+    const [user, change_user, token] = useContext(UserContext)
+    const [wrong, setWrong] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!document.cookie.replace("current_user=", "")){
+           navigate("/login")
+        }   
+      }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        let formData = new FormData()
+
+        formData.append('user', user.username)
+        formData.append('title', title)
+        formData.append('image', drawingFile)
+        formData.append('description', descritpion)
+        formData.append('price', price)
+
+        const requestOptions = {
+            method: 'POST',
+            body: formData
+        }
+        fetch('http://127.0.0.1:8000/posts-api/shop/create', requestOptions)
+            .then(response => response.json())
+            .then((data) => {
+                if (data.status != 'ok'){
+                    setWrong(data.status[0])
+                }
+                else {
+                    navigate('/' + user.username + "/shop")
+                }
+            })
+    }
+
 
     return <>
         <div className="form-container">
             <div className="form-background">
                 <h1>SHOP LISTING</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="input-field">
                         <label htmlFor="drawing">
                             {!drawing &&
@@ -31,6 +71,7 @@ function CreateShop() {
                             value={drawing}
                             onChange={(e) => {
                                 setDrawingPreview(URL.createObjectURL(e.target.files[0]))
+                                setDrawingFile(e.target.files[0])
                                 setDrawing(e.target.value)
                                 }}
                         />
@@ -62,6 +103,7 @@ function CreateShop() {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
+                    <div className="wrong"><div className="wrong-div">{wrong}</div></div>
                     <div className="button-div">
                         <DarkButton>POST</DarkButton>
                     </div>
