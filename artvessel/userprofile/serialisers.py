@@ -49,7 +49,6 @@ def user_serializer(host_base, userprofile):
 
     for user in userprofile.user.usersave_set.all().order_by('-id'):
         current_profile["saved_users_names"].append(user.to_user.user.username)
-        current_profile["saved_users"].append(user_serializer(host_base, user.to_user))
 
     for shop in userprofile.user.shoppost_set.all().order_by('-priority'):
         current_profile["shop"].append(shop_serializer(host_base, shop))

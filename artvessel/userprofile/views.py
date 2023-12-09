@@ -151,3 +151,14 @@ def profile_unsave(request):
     cur_save = UserSave.objects.filter(user=cur_user, to_user=new_user.userprofile).first()
     cur_save.delete()
     return JsonResponse({})
+
+
+@csrf_exempt
+def saved(request):
+    to_return = []
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    cur_user = User.objects.get(username=body['username'])
+    for user in cur_user.usersave_set.all().order_by('-id'):
+        to_return.append(user_serializer(request.get_host(), user.to_user))
+    return JsonResponse({'data': to_return})
