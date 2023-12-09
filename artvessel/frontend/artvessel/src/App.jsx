@@ -13,6 +13,7 @@ import PostDetails from "./PostDetails";
 import EditProfile from "./EditProfile";
 import PostEdit from "./PostEdit";
 import ShopEdit from "./ShopEdit";
+import Saved from "./Saved";
 
 export const UserContext = React.createContext()
 
@@ -58,6 +59,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home/>} title="Home | Artvessel" />
             <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
+            <Route exact path="/saved" element={<Saved/>} title="Log in | Artvessel" />
             <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
             <Route exact path="/create/post" element={<CreatePost/>} title="Create | Artvessel" />
             <Route exact path="/create" element={<Create/>} title="Create | Artvessel" />
