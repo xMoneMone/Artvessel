@@ -4,7 +4,8 @@ from posts import views
 urlpatterns = [
     path('post/create', views.post_create, name="post-create"),
     path('post/edit/<int:pk>', views.post_edit, name="post-edit"),
-    path('post/save/<int:pk>', views.post_save, name="post-save"),
+    path('post/save/save', views.post_save, name="post-save"),
+    path('post/save/unsave', views.post_unsave, name="post-save"),
     path('post/delete/<int:pk>', views.post_delete, name="post-delete"),
     path('post/<int:pk>', views.post, name="post"),
     path('shop/<int:pk>', views.shop, name="shop"),

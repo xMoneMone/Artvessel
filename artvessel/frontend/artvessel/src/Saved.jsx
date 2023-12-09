@@ -22,6 +22,9 @@ function Saved(){
             <a className={section == 'posts' ? "saved-option saved-highlight" : "saved-option"} onClick={change_posts}><h2>POSTS</h2></a>
         </div>
         {section == 'users' && <ProfileCards profiles={user.saved_users} title=""/>}
+        {section == 'users' && user.saved_users.length == 0 && <div className="no-posts-div">
+            <div className="no-posts"><h2>No users</h2></div>
+        </div>}
         {section == 'posts' && <Posts posts={user.saved_posts}/>}
         
     </>

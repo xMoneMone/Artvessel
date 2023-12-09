@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from posts.models import GalleryPost, ShopPost
+from posts.models import GalleryPost, ShopPost, PostSave
 from posts.serialisers import post_serializer, shop_serializer
 from posts.forms import GalleryPostForm, ShopPostForm
 from django.contrib.auth.models import User
@@ -136,5 +136,24 @@ def shop_delete(request, pk):
 
 
 
+@csrf_exempt
 def post_save(request):
-    return
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    cur_user = User.objects.get(username=body['username'])
+    new_user = GalleryPost.objects.get(pk=body['to_post'])
+    new_save = PostSave(to_post=new_user)
+    new_save.save()
+    new_save.user.add(cur_user)
+    return JsonResponse({})
+
+
+@csrf_exempt
+def post_unsave(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    cur_user = User.objects.get(username=body['username'])
+    new_user = GalleryPost.objects.get(pk=body['to_post'])
+    cur_save = PostSave.objects.filter(user=cur_user, to_post=new_user).first()
+    cur_save.delete()
+    return JsonResponse({})
