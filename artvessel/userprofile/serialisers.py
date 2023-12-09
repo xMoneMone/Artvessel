@@ -36,6 +36,10 @@ def user_serializer(host_base, userprofile):
         "shop_info": userprofile.shop_info,
         "posts": [],
         "shop": [],
+        "saved_users_names": [],
+        "saved_users": [],
+        "saved_posts_ids": [],
+        "saved_posts": [],
         "shop_theme1": userprofile.shop_theme1,
         "shop_theme2": userprofile.shop_theme2
     }
@@ -43,7 +47,15 @@ def user_serializer(host_base, userprofile):
     for post in userprofile.user.gallerypost_set.all().order_by('-priority'):
         current_profile["posts"].append(post_serializer(host_base, post))
 
+    for user in userprofile.user.usersave_set.all():
+        current_profile["saved_users_names"].append(user.to_user.user.username)
+        current_profile["saved_users"].append(user_serializer(host_base, user.to_user))
+
     for shop in userprofile.user.shoppost_set.all().order_by('-priority'):
         current_profile["shop"].append(shop_serializer(host_base, shop))
+
+    for post in userprofile.user.postsave_set.all():
+        current_profile["saved_posts_ids"].append(post.id)
+        current_profile["saved_posts"].append(post_serializer(host_base, post.to_post))
 
     return current_profile
