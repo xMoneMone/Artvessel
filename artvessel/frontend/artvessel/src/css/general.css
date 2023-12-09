@@ -69,3 +69,17 @@ body * {
 .long {
   height: 100%;
 }
+
+.not-found {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.not-found * {
+  color: rgb(84, 84, 84);
+  font-size: 2em;
+}

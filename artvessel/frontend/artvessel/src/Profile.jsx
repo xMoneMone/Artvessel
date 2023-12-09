@@ -4,12 +4,14 @@ import ProfileBanner from "./ProfileBanner";
 import Posts from "./posts";
 import Info from "./Info";
 import Shop from "./Shop";
+import PageNotFound from "./PageNotFound";
 
 export const ProfileContext = React.createContext()
 
 function Profile({section}) {
     const {username} = useParams()
     const [profile, setProfile] = useState("")
+    const [empty, setEmpty] = useState(false)
 
     useEffect(() => {
         setTimeout(() => {
@@ -19,6 +21,9 @@ function Profile({section}) {
             })
             .then((data) => {
                 document.title = data.username + " | Artvessel"
+                if (data.username == undefined){
+                    setEmpty(true)
+                }
                 setProfile(data)
             })
             .catch((err) => {
@@ -26,6 +31,10 @@ function Profile({section}) {
             })
         }, 1000)
     }, [])
+
+    if (empty){
+        return <PageNotFound>User does not exist</PageNotFound>
+    }
 
     return <>
         <ProfileContext.Provider value={profile}>

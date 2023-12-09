@@ -4,6 +4,7 @@ import "./css/form.css"
 import { useParams } from "react-router"
 import { UserContext } from "./App";
 import { useNavigate } from "react-router-dom";
+import PageNotFound from "./PageNotFound";
 
 function ShopEdit() {
     const {pk} = useParams()
@@ -13,6 +14,7 @@ function ShopEdit() {
     const [user, change_user, token] = useContext(UserContext)
     const [shop, setShop] = useState('')
     const [wrong, setWrong] = useState('');
+    const [empty, setEmpty] = useState(false)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,6 +30,7 @@ function ShopEdit() {
              } 
         })
         .catch((err) => {
+            setEmpty(true)
             console.log(err.message)
         })
       }, [])
@@ -62,6 +65,10 @@ function ShopEdit() {
                     navigate('/' + user.username + "/shop")
                 }
             })
+    }
+
+    if (empty){
+        return <PageNotFound>Shop does not exist</PageNotFound>
     }
 
 

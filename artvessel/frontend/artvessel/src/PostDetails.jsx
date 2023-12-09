@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import "./css/post.css"
 import { UserContext } from "./App";
+import PageNotFound from "./PageNotFound";
 
 function PostDetails() {
     const {pk} = useParams()
     const [post, setPost] = useState("") 
     const [user, setUser, token] = useContext(UserContext)
     const [saved, setSaved] = useState(false)
+    const [empty, setEmpty] = useState(false)
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,10 +25,15 @@ function PostDetails() {
                 setPost(data)
             })
             .catch((err) => {
+                setEmpty(true)
                 console.log(err.message)
             })
         }, 1000)
     }, [])
+
+    if (empty){
+        return <PageNotFound>Post does not exist</PageNotFound>
+    }
 
     function save_post(){
         const toSend = {

@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { UserContext } from "./App";
 import { useNavigate } from "react-router-dom";
 import DarkButton from "./DarkButton";
+import PageNotFound from "./PageNotFound";
 
 
 function PostEdit(){
@@ -13,6 +14,7 @@ function PostEdit(){
     const [title, setTitle] = useState('');
     const [descritpion, setDescription] = useState(''); 
     const [wrong, setWrong] = useState('');
+    const [empty, setEmpty] = useState(false)
 
     useEffect(() => {
         document.title = "Edit Post | Artvessel"
@@ -27,6 +29,7 @@ function PostEdit(){
              } 
         })
         .catch((err) => {
+            setEmpty(true)
             console.log(err.message)
         })
 
@@ -61,6 +64,10 @@ function PostEdit(){
                     navigate('/post/' + post.id)
                 }
             })
+    }
+
+    if (empty){
+        return <PageNotFound>Post does not exist</PageNotFound>
     }
 
     return <>

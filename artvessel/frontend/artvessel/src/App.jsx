@@ -15,6 +15,7 @@ import PostEdit from "./PostEdit";
 import ShopEdit from "./ShopEdit";
 import Saved from "./Saved";
 import './css/mobile.css'
+import PageNotFound from "./PageNotFound";
 
 export const UserContext = React.createContext()
 
@@ -72,6 +73,7 @@ function App() {
             <Route exact path="/:username" element={<Profile section="gallery"/>}/>
             <Route exact path="/:username/shop" element={<Profile section="shop"/>}/>
             <Route exact path="/:username/info" element={<Profile section="info"/>}/>
+            <Route path="*" element={<PageNotFound>Page not found</PageNotFound>} />
           </Routes>
         </div>
         <Footer/>
