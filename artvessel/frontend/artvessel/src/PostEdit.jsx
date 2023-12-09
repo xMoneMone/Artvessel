@@ -83,8 +83,9 @@ function PostEdit(){
                     </div>
                     <div className="wrong"><div className="wrong-div">{wrong}</div></div>
                     <div className="button-div">
-                        <DarkButton>POST</DarkButton>
+                        <DarkButton>SAVE</DarkButton>
                     </div>
+                    <a className="edit-button edit-delete edit-center">Delete</a>
                 </form>
             </div>
         </div>

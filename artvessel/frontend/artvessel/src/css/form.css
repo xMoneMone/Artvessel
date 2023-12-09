@@ -234,3 +234,9 @@ form h2 {
 .edit-delete {
   color: rgb(221, 161, 194);
 }
+
+.edit-center {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
