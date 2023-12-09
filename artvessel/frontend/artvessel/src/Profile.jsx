@@ -29,7 +29,7 @@ function Profile({section}) {
     return <>
         <ProfileContext.Provider value={profile}>
             <ProfileBanner/>
-            {section == "gallery" && <Posts profile={profile} posts={profile.posts}/>}
+            {section == "gallery" && <Posts posts={profile.posts}/>}
             {section == "info" && <Info/>}
             {section == "shop" && <Shop/>}
         </ProfileContext.Provider>
