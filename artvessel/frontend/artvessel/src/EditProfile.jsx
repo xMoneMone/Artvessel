@@ -42,6 +42,15 @@ function EditProfile() {
         }
     }
 
+    function deleteProfile() {
+        if (confirm("Are you sure?")){
+            fetch("http://127.0.0.1:8000/users-api/delete/" + user.username)
+            document.cookie = "current_user" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+            navigate("/login")
+            window.location.reload()
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -266,7 +275,7 @@ function EditProfile() {
                         <a className="edit-button edit-logout" onClick={edit_logout}>Log out</a>
                         <input id="submit-button" type="submit"></input>
                         <label htmlFor="submit-button"><DarkButton>SAVE</DarkButton></label>
-                        <a className="edit-button edit-delete">Delete</a>
+                        <a className="edit-button edit-delete"onClick={deleteProfile}>Delete</a>
                     </div>
                 </form>
             </div>

@@ -123,5 +123,12 @@ def profile(request, username):
     return JsonResponse({})
 
 
+@csrf_exempt
+def profile_delete(request, username):
+    if User.objects.filter(username=username).exists():
+        cur_post = User.objects.get(username=username)
+        cur_post.delete()
+
+
 def profile_save(request):
     return
