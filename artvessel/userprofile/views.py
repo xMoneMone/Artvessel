@@ -5,6 +5,7 @@ from userprofile.models import UserProfile, UserSave
 from userprofile.forms import CreateUserForm
 from django.db.models import Count
 from userprofile.serialisers import user_serializer
+from posts.serialisers import post_serializer
 from django.views.decorators.csrf import csrf_exempt
 from django.middleware.csrf import get_token
 import json
@@ -155,10 +156,14 @@ def profile_unsave(request):
 
 @csrf_exempt
 def saved(request):
-    to_return = []
+    to_return_users = []
+    to_return_posts = []
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
     cur_user = User.objects.get(username=body['username'])
     for user in cur_user.usersave_set.all().order_by('-id'):
-        to_return.append(user_serializer(request.get_host(), user.to_user))
-    return JsonResponse({'data': to_return})
+        to_return_users.append(user_serializer(request.get_host(), user.to_user))
+    for post in cur_user.postsave_set.all().order_by('-id'):
+        to_return_posts.append(post_serializer(request.get_host(), post.to_post))
+    return JsonResponse({'users': to_return_users,
+                         'posts': to_return_posts})

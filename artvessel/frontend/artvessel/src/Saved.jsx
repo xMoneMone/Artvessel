@@ -8,6 +8,7 @@ function Saved(){
     const [user, setUser, token] = useContext(UserContext)
     const [section, setSection] = useState('users')
     const [savedUsers, setSavedUsers] = useState([])
+    const [savedPosts, setSavedPosts] = useState([])
 
     useEffect(() => {
         const toSend = {
@@ -22,8 +23,8 @@ function Saved(){
         fetch('http://127.0.0.1:8000/users-api/user/save/saved', requestOptions)
             .then(response => response.json())
             .then((data) => {
-                console.log(data.data)
-                setSavedUsers(data.data)
+                setSavedUsers(data.users)
+                setSavedPosts(data.posts)
             })
     }, [section])
 
@@ -44,7 +45,7 @@ function Saved(){
         {section == 'users' && savedUsers.length == 0 && <div className="no-posts-div">
             <div className="no-posts"><h2>No users</h2></div>
         </div>}
-        {section == 'posts' && <Posts posts={user.saved_posts}/>}
+        {section == 'posts' && <Posts posts={savedPosts}/>}
         
     </>
 

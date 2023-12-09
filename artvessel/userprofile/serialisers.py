@@ -37,9 +37,7 @@ def user_serializer(host_base, userprofile):
         "posts": [],
         "shop": [],
         "saved_users_names": [],
-        "saved_users": [],
         "saved_posts_ids": [],
-        "saved_posts": [],
         "shop_theme1": userprofile.shop_theme1,
         "shop_theme2": userprofile.shop_theme2
     }
@@ -55,6 +53,5 @@ def user_serializer(host_base, userprofile):
 
     for post in userprofile.user.postsave_set.all().order_by('-id'):
         current_profile["saved_posts_ids"].append(post.to_post.id)
-        current_profile["saved_posts"].append(post_serializer(host_base, post.to_post))
 
     return current_profile

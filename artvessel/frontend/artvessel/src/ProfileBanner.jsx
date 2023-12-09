@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import './css/profilebanner.css'
 import { ProfileContext } from "./Profile";
 import default_pfp from "./images/default-pfp.png"
@@ -7,7 +7,14 @@ import { UserContext } from "./App";
 
 function ProfileBanner() {
     const profile = useContext(ProfileContext)
-    const [user, setUser,token] = useContext(UserContext)
+    const [user, setUser, token] = useContext(UserContext)
+    const [saved, setSaved] = useState(false)
+
+    useEffect(() => {
+        if (user){
+            setSaved(user.saved_users_names.includes(profile.username))
+        }
+    }, [profile])
 
     function save_user(){
         const toSend = {
@@ -23,8 +30,8 @@ function ProfileBanner() {
         fetch('http://127.0.0.1:8000/users-api/user/save/save', requestOptions)
             .then(response => response.json())
             .then((data) => {
-                window.location.reload()
             })
+        setSaved(true)
     }
 
     function remove_save(){
@@ -41,8 +48,8 @@ function ProfileBanner() {
         fetch('http://127.0.0.1:8000/users-api/user/save/unsave', requestOptions)
             .then(response => response.json())
             .then((data) => {
-                window.location.reload()
             })
+        setSaved(false)
     }
 
     return <>
@@ -59,10 +66,10 @@ function ProfileBanner() {
                 {profile.username && <h2 className="profile-username">{profile.username}</h2>}
                 {!profile.username && <h2 className="profile-username">Loading...</h2>}
                 <div className="icons">
-                    {user && user.username != profile.username && !user.saved_users_names.includes(profile.username) &&
+                    {user && user.username != profile.username && !saved &&
                     <svg onClick={save_user} className="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48C0 21.5 21.5 0 48 0l0 48V441.4l130.1-92.9c8.3-6 19.6-6 27.9 0L336 441.4V48H48V0H336c26.5 0 48 21.5 48 48V488c0 9-5 17.2-13 21.3s-17.6 3.4-24.9-1.8L192 397.5 37.9 507.5c-7.3 5.2-16.9 5.9-24.9 1.8S0 497 0 488V48z"/></svg>
                     }
-                    {user && user.username != profile.username && user.saved_users_names.includes(profile.username) &&
+                    {user && user.username != profile.username && saved &&
                     <svg onClick={remove_save} className="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>
                     }
                     {user && user.username === profile.username && <Link to="/edit-profile">
