@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 function CreatePost() {
     const [title, setTitle] = useState('');
     const [descritpion, setDescription] = useState('');
+    const [drawing, setDrawing] = useState('');
+    const [drawingFile, setDrawingFile] = useState('');
+    const [drawingPreview, setDrawingPreview] = useState('');
     const [user, change_user, token] = useContext(UserContext)
     const [wrong, setWrong] = useState('');
     const navigate = useNavigate();
