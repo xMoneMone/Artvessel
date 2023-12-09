@@ -44,13 +44,13 @@ def user_serializer(host_base, userprofile):
         "shop_theme2": userprofile.shop_theme2
     }
 
-    for post in userprofile.user.gallerypost_set.all().order_by('-priority'):
+    for post in userprofile.user.gallerypost_set.all().order_by('-priority', '-id'):
         current_profile["posts"].append(post_serializer(host_base, post))
 
     for user in userprofile.user.usersave_set.all().order_by('-id'):
         current_profile["saved_users_names"].append(user.to_user.user.username)
 
-    for shop in userprofile.user.shoppost_set.all().order_by('-priority'):
+    for shop in userprofile.user.shoppost_set.all().order_by('-priority', '-id'):
         current_profile["shop"].append(shop_serializer(host_base, shop))
 
     for post in userprofile.user.postsave_set.all().order_by('-id'):
