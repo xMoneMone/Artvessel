@@ -128,5 +128,13 @@ def shop_edit(request, pk):
     return JsonResponse({"status": "doesn't exist"})
 
 
+@csrf_exempt
+def shop_delete(request, pk):
+    if ShopPost.objects.filter(pk=pk).exists():
+        cur_post = ShopPost.objects.get(pk=pk)
+        cur_post.delete()
+
+
+
 def post_save(request):
     return

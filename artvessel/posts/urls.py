@@ -9,5 +9,6 @@ urlpatterns = [
     path('post/<int:pk>', views.post, name="post"),
     path('shop/<int:pk>', views.shop, name="shop"),
     path('shop/edit/<int:pk>', views.shop_edit, name="shop-edit"),
+    path('shop/delete/<int:pk>', views.shop_delete, name="shop-delete"),
     path('shop/create', views.shop_create, name="shop-create")
 ]
