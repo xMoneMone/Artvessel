@@ -15,6 +15,7 @@ function PostDetails() {
                 return res.json()
             })
             .then((data) => {
+                document.title = data.title + " | Artvessel"
                 setPost(data)
             })
             .catch((err) => {

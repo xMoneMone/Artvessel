@@ -92,6 +92,7 @@ function EditProfile() {
     }
 
     useEffect(() => {
+    document.title = "Edit Profile | Artvessel"
     if (!document.cookie.replace("current_user=", "")){
        navigate("/login")
     }   

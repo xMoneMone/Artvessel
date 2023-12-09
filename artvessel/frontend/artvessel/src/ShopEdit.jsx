@@ -16,6 +16,7 @@ function ShopEdit() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.title = "Edit Shop | Artvessel"
         fetch("http://127.0.0.1:8000/posts-api/shop/" + pk)
         .then(res => {
             return res.json()

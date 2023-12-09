@@ -15,6 +15,7 @@ function PostEdit(){
     const [wrong, setWrong] = useState('');
 
     useEffect(() => {
+        document.title = "Edit Post | Artvessel"
         fetch("http://127.0.0.1:8000/posts-api/post/" + pk)
         .then(res => {
             return res.json()
@@ -65,7 +66,7 @@ function PostEdit(){
     return <>
         <div className="form-container">
             <div className="form-background">
-                <h1>EDIT DRAWING</h1>
+                <h1>EDIT POST</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="input-field">
                             <div className="drawing-preview"><img src={post.image} alt="post preview"></img></div>

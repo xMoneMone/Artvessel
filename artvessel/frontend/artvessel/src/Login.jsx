@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DarkButton from "./DarkButton"
 import "./css/form.css"
 import { UserContext } from "./App";
@@ -10,6 +10,10 @@ function Login() {
     const [wrong, setWrong] = useState('');
     const [user, change_user, token] = useContext(UserContext)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "Login | Artvessel"
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault()

@@ -16,6 +16,7 @@ function CreateShop() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.title = "Create Shop | Artvessel"
         if (!document.cookie.replace("current_user=", "")){
            navigate("/login")
         }   

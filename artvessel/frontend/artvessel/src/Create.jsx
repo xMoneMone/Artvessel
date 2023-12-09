@@ -7,6 +7,7 @@ function Create() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.title = "Create | Artvessel"
         if (!document.cookie.replace("current_user=", "")){
            navigate("/login")
         }   

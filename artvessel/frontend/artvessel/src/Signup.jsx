@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DarkButton from "./DarkButton"
 import { UserContext } from "./App";
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,10 @@ function Login() {
     const [user, change_user, token] = useContext(UserContext)
     const [wrong, setWrong] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "Sign up | Artvessel"
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault()

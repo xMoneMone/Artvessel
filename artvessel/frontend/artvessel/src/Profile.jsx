@@ -18,6 +18,7 @@ function Profile({section}) {
                 return res.json()
             })
             .then((data) => {
+                document.title = data.username + " | Artvessel"
                 setProfile(data)
             })
             .catch((err) => {

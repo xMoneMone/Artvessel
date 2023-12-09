@@ -57,20 +57,20 @@ function App() {
         <Navbar/>
         <div className="whole-page">
           <Routes>
-            <Route exact path="/" element={<Home/>} title="Home | Artvessel" />
-            <Route exact path="/login" element={<Login/>} title="Log in | Artvessel" />
-            <Route exact path="/saved" element={<Saved/>} title="Log in | Artvessel" />
-            <Route exact path="/signup" element={<Signup/>} title="Sign up | Artvessel" />
-            <Route exact path="/create/post" element={<CreatePost/>} title="Create | Artvessel" />
-            <Route exact path="/create" element={<Create/>} title="Create | Artvessel" />
-            <Route exact path="/post/:pk/edit" element={<PostEdit/>} title="Create | Artvessel" />
-            <Route exact path="/post/:pk" element={<PostDetails/>} title="Create | Artvessel" />
-            <Route exact path="/create/shop" element={<CreateShop/>} title="Create | Artvessel" />
-            <Route exact path="/edit-profile" element={<EditProfile/>} title="Create | Artvessel" />
-            <Route exact path="/shop/:pk/edit" element={<ShopEdit/>} title="Create | Artvessel" />
-            <Route exact path="/:username" element={<Profile section="gallery"/>} title="Profile | Artvessel" />
-            <Route exact path="/:username/shop" element={<Profile section="shop"/>} title="Profile | Artvessel" />
-            <Route exact path="/:username/info" element={<Profile section="info"/>} title="Profile | Artvessel" />
+            <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/login" element={<Login/>} />
+            <Route exact path="/saved" element={<Saved/>} />
+            <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/create/post" element={<CreatePost/>}/>
+            <Route exact path="/create" element={<Create/>}/>
+            <Route exact path="/post/:pk/edit" element={<PostEdit/>}/>
+            <Route exact path="/post/:pk" element={<PostDetails/>}/>
+            <Route exact path="/create/shop" element={<CreateShop/>}/>
+            <Route exact path="/edit-profile" element={<EditProfile/>}/>
+            <Route exact path="/shop/:pk/edit" element={<ShopEdit/>}/>
+            <Route exact path="/:username" element={<Profile section="gallery"/>}/>
+            <Route exact path="/:username/shop" element={<Profile section="shop"/>}/>
+            <Route exact path="/:username/info" element={<Profile section="info"/>}/>
           </Routes>
         </div>
         <Footer/>

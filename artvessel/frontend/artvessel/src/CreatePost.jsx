@@ -16,6 +16,7 @@ function CreatePost() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.title = "Create Post | Artvessel"
         if (!document.cookie.replace("current_user=", "")){
            navigate("/login")
         }   
