@@ -14,6 +14,7 @@ import EditProfile from "./EditProfile";
 import PostEdit from "./PostEdit";
 import ShopEdit from "./ShopEdit";
 import Saved from "./Saved";
+import './css/mobile.css'
 
 export const UserContext = React.createContext()
 
