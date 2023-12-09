@@ -1,21 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
 import DarkButton from "./DarkButton"
 import "./css/form.css"
+import { useParams } from "react-router"
 import { UserContext } from "./App";
 import { useNavigate } from "react-router-dom";
 
-
-function CreatePost() {
+function ShopEdit() {
+    const {pk} = useParams()
     const [title, setTitle] = useState('');
     const [descritpion, setDescription] = useState('');
+    const [price, setPrice] = useState('');
     const [user, change_user, token] = useContext(UserContext)
+    const [shop, setShop] = useState('')
     const [wrong, setWrong] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!document.cookie.replace("current_user=", "")){
-           navigate("/login")
-        }   
+        fetch("http://127.0.0.1:8000/posts-api/shop/" + pk)
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            setShop(data)
+            if (document.cookie.replace("current_user=", "") != data.author){
+                navigate("/login")
+             } 
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
       }, [])
 
     const handleSubmit = (e) => {
@@ -23,80 +36,71 @@ function CreatePost() {
 
         let formData = new FormData()
 
-        formData.append('user', user.username)
         formData.append('title', title)
-        formData.append('drawing', drawingFile)
         formData.append('description', descritpion)
+        formData.append('price', price)
 
         const requestOptions = {
             method: 'POST',
             body: formData
         }
-        fetch('http://127.0.0.1:8000/posts-api/post/create', requestOptions)
+        fetch('http://127.0.0.1:8000/posts-api/shop/edit/'+ shop.id, requestOptions)
             .then(response => response.json())
             .then((data) => {
                 if (data.status != 'ok'){
                     setWrong(data.status[0])
                 }
                 else {
-                    navigate('/' + user.username)
+                    navigate('/' + user.username + "/shop")
                 }
             })
     }
 
+
     return <>
         <div className="form-container">
             <div className="form-background">
-                <h1>POST DRAWING</h1>
+                <h1>EDIT SHOP LISTING</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="input-field">
-                        <label htmlFor="drawing">
-                            {!drawing &&
-                            <div className="drawing_label">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
-                            </div>}
-                            {drawing &&
-                            <div className="drawing-preview"><img src={drawingPreview} alt="post preview"></img></div>}
-                        </label>
-                        <input
-                            id="drawing"
-                            type="file"
-                            required
-                            accept=".png,.jpg,.jpeg"
-                            value={drawing}
-                            onChange={(e) => {
-                                setDrawingPreview(URL.createObjectURL(e.target.files[0]))
-                                setDrawingFile(e.target.files[0])
-                                setDrawing(e.target.value)
-                                }}
-                        />
+                            <div className="drawing-preview"><img src={shop.image} alt="post preview"></img></div>
                     </div>
                     <div className="input-field">
-                        <label>Title:*</label>
+                        <label>Title:</label>
                         <input
                             type="text"
                             required
-                            value={title}
+                            value={title ? title : shop.title}
                             onChange={(e) => setTitle(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field">
+                        <label>Price:</label>
+                        <input
+                            type="text"
+                            required
+                            value={price ? price : shop.price}
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
                     <div className="input-field">
                         <label>Description:</label>
                         <textarea
-                            maxLength="2000"
+                            maxLength="400"
                             className="description"
-                            value={descritpion}
+                            value={descritpion ? descritpion : shop.description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
                     <div className="wrong"><div className="wrong-div">{wrong}</div></div>
                     <div className="button-div">
-                        <DarkButton>POST</DarkButton>
+                        <DarkButton>SAVE</DarkButton>
                     </div>
+                    <a className="edit-button edit-delete edit-center">Delete</a>
                 </form>
             </div>
         </div>
     </>
 }
 
-export default CreatePost
+export default ShopEdit

@@ -31,7 +31,7 @@ function Shop() {
                 </p>
                 </div>}
                 {profile && profile.shop.map((shopListing) => {
-                    return <Link key={shopListing.id} to={"/shop/" + shopListing.id}>
+                    return <Link key={shopListing.id} to={"/shop/" + shopListing.id + "/edit"}>
                             <div className="shop">
                                 <h2 className="shop-title">{shopListing.title}</h2>
                                 <h3 className="shop-price">{shopListing.price}</h3>

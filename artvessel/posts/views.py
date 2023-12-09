@@ -93,8 +93,32 @@ def shop_create(request):
         return JsonResponse(to_send)
 
 
-def shop(request):
-    return
+def shop(request, pk):
+    if ShopPost.objects.filter(pk=pk).exists():
+        cur_shop = ShopPost.objects.get(pk=pk)
+        return JsonResponse(shop_serializer(request.get_host(), cur_shop))
+
+
+@csrf_exempt
+def shop_edit(request, pk):
+    if ShopPost.objects.filter(pk=pk).exists():
+        cur_post = ShopPost.objects.get(pk=pk)
+
+        data = request.POST
+        title = data.get('title', None)
+        if title:
+            cur_post.title = title
+        description = data.get('description', None)
+        if description:
+            cur_post.description = description
+        price = data.get('price', None)
+        if price:
+            cur_post.price = price
+
+        cur_post.save()
+
+        return JsonResponse({"status": "ok"})
+    return JsonResponse({"status": "doesn't exist"})
 
 
 def post_save(request):
