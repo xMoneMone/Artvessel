@@ -9,7 +9,7 @@ export const ProfileContext = React.createContext()
 
 function Profile({section}) {
     const {username} = useParams()
-    const [profile, setProfile] = useState("")  
+    const [profile, setProfile] = useState("")
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,7 +29,7 @@ function Profile({section}) {
     return <>
         <ProfileContext.Provider value={profile}>
             <ProfileBanner/>
-            {section == "gallery" && <Posts/>}
+            {section == "gallery" && <Posts posts={profile.posts}/>}
             {section == "info" && <Info/>}
             {section == "shop" && <Shop/>}
         </ProfileContext.Provider>
