@@ -54,8 +54,56 @@ def signup(request):
 
 @csrf_exempt
 def user_edit(request):
-    print(request)
-    return JsonResponse({})
+    data = request.POST
+
+    cur_user = User.objects.get(username=data.get('user', None)).userprofile
+
+    cover_pic = request.FILES.get('cover', None)
+    if cover_pic:
+        cur_user.cover_pic = cover_pic
+    profile_pic = request.FILES.get('profile_pic', None)
+    if profile_pic:
+        cur_user.profile_pic = profile_pic
+    bio = data.get('bio', None)
+    if bio:
+        cur_user.bio = bio
+    location = data.get('location', None)
+    if location:
+        cur_user.location = location
+    phone = data.get('phone', None)
+    if phone:
+        cur_user.phone = phone
+    email = data.get('email', None)
+    if email:
+        cur_user.location = email
+    link1 = data.get('link1', None)
+    if link1:
+        cur_user.link1 = link1
+    link2 = data.get('link2', None)
+    if link2:
+        cur_user.link2 = link2
+    link3 = data.get('link3', None)
+    if link3:
+        cur_user.link3 = link3
+    link4 = data.get('link4', None)
+    if link4:
+        cur_user.link4 = link4
+    link5 = data.get('link5', None)
+    if link5:
+        cur_user.link5 = link5
+    shop_info = data.get('shop_info', None)
+    if shop_info:
+        cur_user.shop_info = shop_info
+    shop_theme1 = data.get('shop_theme1', None)
+    if shop_theme1:
+        cur_user.shop_theme1 = shop_theme1
+    shop_theme2 = data.get('shop_theme2', None)
+    if shop_theme2:
+        cur_user.shop_theme2 = shop_theme2
+
+    cur_user.save()
+
+    return JsonResponse({"status": "ok"})
 
 
 def all_users(request):

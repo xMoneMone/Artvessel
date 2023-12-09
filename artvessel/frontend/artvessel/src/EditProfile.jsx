@@ -7,10 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 function EditProfile() {
     const [user, change_user, token] = useContext(UserContext)
     const navigate = useNavigate()
+    const [wrong, setWrong] = useState('')
 
     const [cover, setCover] = useState('');
+    const [coverFile, setCoverFile] = useState('');
     const [coverPreview, setCoverPreview] = useState(''); 
     const [pfp, setPfp] = useState('');
+    const [pfpFile, setPfpFile] = useState('');
     const [pfpPreview, setPfpPreview] = useState(''); 
     const [height, setHeight] = useState(''); 
     const [width, setWidth] = useState(''); 
@@ -42,34 +45,41 @@ function EditProfile() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const toSend = {
-            user: user.username,
-            cover: cover,
-            pfp: pfp,
-            bio: bio,
-            location: location,
-            phone: phone,
-            email: email, 
-            link1: link1,
-            link2: link2,
-            link3: link3,
-            link4: link4,
-            link5: link5,
-            shop_info: shopInfo,
-            shop_theme1: shopTheme1,
-            shop_theme2: shopTheme2
-        }
+        let formData = new FormData()
+
+        formData.append('user', user.username)
+        formData.append('cover', coverFile)
+        formData.append('profile_pic', pfpFile)
+        formData.append('bio', bio)
+        formData.append('location', location)
+        formData.append('phone', phone)
+        formData.append('email', email)
+        formData.append('link1', link1)
+        formData.append('link2', link2)
+        formData.append('link3', link3)
+        formData.append('link4', link4)
+        formData.append('link5', link5)
+        formData.append('shop_info', shopInfo)
+        formData.append('shop_theme1', shopTheme1)
+        formData.append('shop_theme2', shopTheme2)
 
         const requestOptions = {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/x-www-form-urlencoded'},
-            body: JSON.stringify(toSend)    
+            body: formData    
         }
         fetch('http://127.0.0.1:8000/users-api/user/edit', requestOptions)
             .then(response => response.json())
             .then((data) => {
-                console.log(data)})
+                console.log(data)
+                if (data.status == "ok"){
+                    navigate('/' + user.username)
+                    window.location.reload()
+
+                }
+                else {
+                    setWrong('Could not update profile')
+                }
+            })
     }
 
     useEffect(() => {
@@ -102,6 +112,7 @@ function EditProfile() {
                             value={cover}
                             onChange={(e) => {
                                 setCoverPreview(URL.createObjectURL(e.target.files[0]))
+                                setCoverFile(e.target.files[0])
                                 setCover(e.target.value)
                                 }
                             }
@@ -125,6 +136,7 @@ function EditProfile() {
                             value={pfp}
                             onChange={(e) => {
                                 setPfpPreview(URL.createObjectURL(e.target.files[0]))
+                                setPfpFile(e.target.files[0])
                                 setPfp(e.target.value)
                                 
                                 const reader = new FileReader();
@@ -249,11 +261,12 @@ function EditProfile() {
                             />
                         </div>
                     </div>
+                    <div className="wrong"><div className="wrong-div">{wrong}</div></div>
                     <div className="edit-button-div">
-                        <button className="edit-button edit-logout" onClick={edit_logout}>Log out</button>
+                        <a className="edit-button edit-logout" onClick={edit_logout}>Log out</a>
                         <input id="submit-button" type="submit"></input>
                         <label htmlFor="submit-button"><DarkButton>SAVE</DarkButton></label>
-                        <button className="edit-button edit-delete">Delete</button>
+                        <a className="edit-button edit-delete">Delete</a>
                     </div>
                 </form>
             </div>
