@@ -63,6 +63,13 @@ def post_edit(request, pk):
 
 
 @csrf_exempt
+def post_delete(request, pk):
+    if GalleryPost.objects.filter(pk=pk).exists():
+        cur_post = GalleryPost.objects.get(pk=pk)
+        cur_post.delete()
+
+
+@csrf_exempt
 def shop_create(request):
     data = request.POST
 

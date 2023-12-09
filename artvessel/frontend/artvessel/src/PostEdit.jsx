@@ -31,6 +31,13 @@ function PostEdit(){
 
     }, [])
 
+    function deletePost() {
+        if (confirm("Are you sure?")){
+            fetch("http://127.0.0.1:8000/posts-api/post/delete/" + pk)
+            navigate("/" + user.username)
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -85,7 +92,7 @@ function PostEdit(){
                     <div className="button-div">
                         <DarkButton>SAVE</DarkButton>
                     </div>
-                    <a className="edit-button edit-delete edit-center">Delete</a>
+                    <a className="edit-button edit-delete edit-center" onClick={deletePost}>Delete</a>
                 </form>
             </div>
         </div>
