@@ -24,7 +24,7 @@ function ProfileCards ({profiles, title}) {
                         </div>)    
                     })
                 }
-                <DarkButton onClick={load_more}>SHOW MORE</DarkButton>
+                {/* <DarkButton onClick={load_more}>SHOW MORE</DarkButton> */}
             </div>
         </>
     )

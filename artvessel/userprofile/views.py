@@ -130,5 +130,24 @@ def profile_delete(request, username):
         cur_post.delete()
 
 
+@csrf_exempt
 def profile_save(request):
-    return
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    cur_user = User.objects.get(username=body['username'])
+    new_user = User.objects.get(username=body['to_username'])
+    new_save = UserSave(to_user=new_user.userprofile)
+    new_save.save()
+    new_save.user.add(cur_user)
+    return JsonResponse({})
+
+
+@csrf_exempt
+def profile_unsave(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    cur_user = User.objects.get(username=body['username'])
+    new_user = User.objects.get(username=body['to_username'])
+    cur_save = UserSave.objects.filter(user=cur_user, to_user=new_user.userprofile).first()
+    cur_save.delete()
+    return JsonResponse({})
