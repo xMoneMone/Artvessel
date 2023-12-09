@@ -44,6 +44,25 @@ def post_create(request):
 
 
 @csrf_exempt
+def post_edit(request, pk):
+    if GalleryPost.objects.filter(pk=pk).exists():
+        cur_post = GalleryPost.objects.get(pk=pk)
+
+        data = request.POST
+        title = data.get('title', None)
+        if title:
+            cur_post.title = title
+        description = data.get('description', None)
+        if description:
+            cur_post.description = description
+
+        cur_post.save()
+
+        return JsonResponse({"status": "ok"})
+    return JsonResponse({"status": "doesn't exist"})
+
+
+@csrf_exempt
 def shop_create(request):
     data = request.POST
 
